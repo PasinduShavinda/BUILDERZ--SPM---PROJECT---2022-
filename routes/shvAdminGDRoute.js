@@ -17,7 +17,7 @@ const upload = multer({
 });
 
 // Get All users Route
-router.get("/", (req, res) => {
+router.get("/allAdminGD", (req, res) => {
     AdminGD.find().exec((err, adminGds) => {
         if (err) {
             res.json({ message: err.message })
@@ -60,7 +60,7 @@ router.post('/addAdminGD', upload.any(), (req, res) => {
                 type: "success",
                 message: "Garden Designer Added Successfully",
             };
-            res.redirect("/");
+            res.redirect("/allAdminGD");
         }
     })
 });
@@ -104,12 +104,12 @@ router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
     } else {
         new_ProfilePic = req.body.old_ProfilePic;
     }
-    
+
     // First Project Pic
     if (req.file) {
         new_FirstProjectPic = req.files[1] && req.files[1].filename ? req.files[1].filename : '';
         try {
-            fs.unlinkSync(`./uploads/${req.body.old_FirstProjectPic}`);  
+            fs.unlinkSync(`./uploads/${req.body.old_FirstProjectPic}`);
         } catch (err) {
             console.log(err);
         }
@@ -120,10 +120,10 @@ router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
     // Second Project Pic
     if (req.file) {
 
-       new_SecondProjectPic = req.files[2] && req.files[2].filename ? req.files[2].filename : '';
-    
+        new_SecondProjectPic = req.files[2] && req.files[2].filename ? req.files[2].filename : '';
+
         try {
-            fs.unlinkSync(`./uploads/${req.body.old_SecondProjectPic}`);  
+            fs.unlinkSync(`./uploads/${req.body.old_SecondProjectPic}`);
         } catch (err) {
             console.log(err);
         }
@@ -135,15 +135,15 @@ router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
     if (req.file) {
 
         new_ThirdProjectPic = req.files[3] && req.files[3].filename ? req.files[3].filename : '';
-     
-         try {
-             fs.unlinkSync(`./uploads/${req.body.old_ThirdProjectPic}`);  
-         } catch (err) {
-             console.log(err);
-         }
-     } else {
+
+        try {
+            fs.unlinkSync(`./uploads/${req.body.old_ThirdProjectPic}`);
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
         new_ThirdProjectPic = req.body.old_ThirdProjectPic;
-     }
+    }
 
     AdminGD.findByIdAndUpdate(id, {
         Name: req.body.Name,
@@ -153,9 +153,9 @@ router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
         ProfilePic: new_ProfilePic,
         FirstProjectPic: new_FirstProjectPic,
         FirstProjectDesc: req.body.FirstProjectDesc,
-        SecondProjectPic:new_SecondProjectPic,
+        SecondProjectPic: new_SecondProjectPic,
         SecondProjectDesc: req.body.SecondProjectDesc,
-        ThirdProjectPic:new_ThirdProjectPic,
+        ThirdProjectPic: new_ThirdProjectPic,
         ThirdProjectDesc: req.body.ThirdProjectDesc,
 
     }, (err, result) => {
@@ -166,7 +166,7 @@ router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
                 type: 'success',
                 message: 'Garden Designer Updated Successfully'
             };
-            res.redirect('/');
+            res.redirect('/allAdminGD');
         }
     })
 });
@@ -182,24 +182,24 @@ router.get('/deleteAdminGD/:id', (req, res) => {
                 console.log(err);
             }
         }
-        if(result.FirstProjectPic != ''){
-            try{
+        if (result.FirstProjectPic != '') {
+            try {
                 fs.unlinkSync(`./uploads/${result.FirstProjectPic}`);
-            }catch(err){
+            } catch (err) {
                 console.log(err);
             }
         }
-        if(result.SecondProjectPic != ''){
-            try{
+        if (result.SecondProjectPic != '') {
+            try {
                 fs.unlinkSync(`./uploads/${result.SecondProjectPic}`);
-            }catch(err){
+            } catch (err) {
                 console.log(err);
             }
         }
-        if(result.ThirdProjectPic != ''){
-            try{
+        if (result.ThirdProjectPic != '') {
+            try {
                 fs.unlinkSync(`./uploads/${result.ThirdProjectPic}`);
-            }catch(err){
+            } catch (err) {
                 console.log(err);
             }
         }
@@ -210,9 +210,17 @@ router.get('/deleteAdminGD/:id', (req, res) => {
                 type: 'info',
                 message: 'Garden Designer Deleted Successfully'
             };
-            res.redirect("/");
+            res.redirect("/allAdminGD");
         }
 
+    });
+});
+
+// Home Page button click event
+router.get('/', (req, res) => {
+    res.render("AdminHomePage",
+    {
+      title: "Admin Home Page"
     });
 });
 
