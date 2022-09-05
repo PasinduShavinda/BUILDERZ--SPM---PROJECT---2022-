@@ -2,11 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
-
+//const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// database configuration
+// Database configuration
 mongoose.connect(
     process.env.DB_URI,
     {
@@ -36,13 +36,17 @@ app.use((req, res, next) =>{
     next();
 });
 
-// app.use(express.static("uploads"));
+app.use(express.static("uploads"));
+
 
 // Set template engine
 app.set('view engine', 'ejs');
 
+// Set views folder
+//app.set('views', path.join(__dirname, 'views'));
+
 // route prefix
-// app.use("", require("./routes/routes"));
+app.use("", require("./routes/shvAdminGDRoute"));
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

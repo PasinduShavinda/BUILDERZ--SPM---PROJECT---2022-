@@ -1,0 +1,110 @@
+<%- include('layout/header') %>
+
+    <div class="container">
+        </br></br>
+        <center>
+            <h2 class="text-dark">Update Garden Designer (<%= adminGd.Name %>)</h2>
+        </center>
+        </br>
+        <div class="row">
+            <form action="/updateAdminGD/<%= adminGd._id %>" method="post" id="add-form" enctype="multipart/form-data">
+
+                <img class="form-group">
+                <label for="ProfilePic">Profile Picture</label>
+                <input type="file" name="ProfilePic" class="form-control" id="ProfilePic">
+                <img src="/<%= adminGd.ProfilePic %>" width="100" class="img-thumbnail mt-1"></img>
+        </div>
+        <input type="hidden" name="old_ProfilePic" value="<%= adminGd.ProfilePic %> ">
+        </br>
+
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" name="Name" class="form-control" id="Name" placeholder="Enter name"
+                value="<%= adminGd.Name %>">
+        </div>
+        </br>
+
+
+        <div class="form-group">
+            <label for="Email">Email address</label>
+            <input type="email" name="Email" class="form-control" id="Email" placeholder="Enter email"
+                value="<%= adminGd.Email %>">
+        </div>
+        </br>
+
+        <div class="form-group">
+            <label for="Phone">Contact No</label>
+            <input type="tel" name="phone" class="form-control" id="phone" placeholder="Enter Contact Number"
+                value="<%= adminGd.Phone %>">
+        </div>
+        </br>
+
+        <div class="form-group">
+            <label for="Qualifications">Qualifications</label>
+            <input type="text" name="Qualifications" class="form-control" id="Qualifications"
+                placeholder="Enter qulifications" value="<%= adminGd.Qualifications %>">
+        </div>
+        </br>
+
+
+
+
+
+
+
+
+        <!-- First PROJECT PIC -->
+
+        <img class="form-group">
+        <label for="FirstProjectPic">First Project Pic</label>
+        <input type="file" name="SecondProjectPic" class="form-control" id="FirstProjectPic">
+        <img src="/<%= adminGd.FirstProjectPic %>" width="100" class="img-thumbnail mt-1"></img>
+        <input type="hidden" name="old_FirstProjectPic" value="<%= adminGd.SecondProjectPic %> ">
+        </br>
+
+        <div class="form-group">
+            <label for="FirstProjectDesc">First Project Description</label>
+            <input type="text" name="FirstProjectDesc" class="form-control" id="FirstProjectDesc"
+                placeholder="Enter Description" value="<%= adminGd.FirstProjectDesc %>">
+        </div>
+        </br>
+
+        <!-- Second PROJECT PIC -->
+        <img class="form-group">
+        <label for="SecondProjectPic">Second Project Pic</label>
+        <input type="file" name="SecondProjectPic" class="form-control" id="SecondProjectPic">
+        <img src="/<%= adminGd.SecondProjectPic %>" width="100" class="img-thumbnail mt-1"></img>
+        <input type="hidden" name="old_SecondProjectPic" value="<%= adminGd.SecondProjectPic %> ">
+        </br>
+
+
+        <div class="form-group">
+            <label for="SecondProjectDesc">Second Project Description</label>
+            <input type="text" name="SecondProjectDesc" class="form-control" id="SecondProjectDesc"
+                placeholder="Enter Description" value="<%= adminGd.SecondProjectDesc %>">
+        </div>
+        </br>
+
+
+        <!-- Third PROJECT PIC -->
+        <img class="form-group">
+        <label for="ThirdProjectPic">Third Project Pic</label>
+        <input type="file" name="ThirdProjectPic" class="form-control" id="ThirdProjectPic">
+        <img src="/<%= adminGd.ThirdProjectPic %>" width="100" class="img-thumbnail mt-1"></img>
+        <input type="hidden" name="old_ThirdProjectPic" value="<%= adminGd.ThirdProjectPic %> ">
+        </br>
+
+
+        <div class="form-group">
+            <label for="ThirdProjectDesc">Third Project Description</label>
+            <input type="text" name="ThirdProjectDesc" class="form-control" id="ThirdProjectDesc"
+                placeholder="Enter Third Project Description" value="<%= adminGd.ThirdProjectDesc %>">
+        </div>
+        </br>
+
+        <input type="submit" name="submit" value="Update Garden Designer" class="btn btn-success" />
+        </form>
+    </div>
+    </div>
+
+    <%- include('layout/footer') %>

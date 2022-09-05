@@ -1,0 +1,83 @@
+<%- include('layout/header') %>
+
+<div class="container">
+</br></br>
+    <center>
+        <h2>Add Garden Designer</h2>
+    </center>
+</br>
+    <div class = "row">
+        <form action = "/addAdminGD" method = "post" id = "add-form" enctype="multipart/form-data">
+            
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" name = "Name" class="form-control" id="Name" placeholder="Enter name">
+            </div>
+            </br>
+
+            <div class="form-group">
+              <label for="Email">Email address</label>
+              <input type="email" name = "Email" class="form-control" id="Email" placeholder="Enter email">
+            </div>
+            </br>
+
+            <div class="form-group">
+              <label for="Phone">Contact No</label>
+              <input type="number" name = "Phone" class="form-control" id="Phone" placeholder="Enter Contact Number">
+            </div>
+            </br>
+
+            <div class="form-group">
+                <label for="Qualifications">Qualifications</label>
+                <input type="text" name = "Qualifications" class="form-control" id="Qualifications" placeholder="Enter qulifications">
+            </div>
+            </br>
+    
+            <div class="form-group">
+                <label for="ProfilePic">Profile Picture</label>
+                <input type="file" name = "ProfilePic" class="form-control" id="ProfilePic">
+            </div>
+            </br>
+
+            <div class="form-group">
+                <label for="FirstProjectPic">FirstProjectPic</label>
+                <input type="file" name = "FirstProjectPic" class="form-control" id="FirstProjectPic">
+            </div>
+            </br>
+
+            <div class="form-group">
+                <label for="FirstProjectDesc">First Project Description</label>
+                <input type="text" name = "FirstProjectDesc" class="form-control" id="FirstProjectDesc" placeholder="Enter Description">
+            </div>
+            </br>
+    
+            <div class="form-group">
+                <label for="SecondProjectPic">SecondProjectPic</label>
+                <input type="file" name = "SecondProjectPic" class="form-control" id="SecondProjectPic">
+            </div>
+            </br>
+
+            <div class="form-group">
+                <label for="SecondProjectDesc">Second Project Description</label>
+                <input type="text" name = "SecondProjectDesc" class="form-control" id="SecondProjectDesc" placeholder="Enter Description">
+            </div>
+            </br>
+
+            <div class="form-group">
+                <label for="ThirdProjectPic">ThirdProjectPic</label>
+                <input type="file" name = "ThirdProjectPic" class="form-control" id="ThirdProjectPic">
+            </div>
+            </br>
+
+            <div class="form-group">
+                <label for="ThirdProjectDesc">Third Project Description</label>
+                <input type="text" name = "ThirdProjectDesc" class="form-control" id="ThirdProjectDesc" placeholder="Enter Third Project Description">
+            </div>
+            </br>
+    
+            <input type="submit" name = "submit" value = "Add Garden Designer" class="btn btn-danger" />
+        </form>
+    </div>
+</div>
+
+<%- include('layout/footer') %> 
