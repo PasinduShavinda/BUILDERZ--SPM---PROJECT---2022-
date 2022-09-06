@@ -3,17 +3,13 @@
 <div >
     <div>
         <div>
-            <% if(message){%>
-        <div class="alert alert-dismissibile fade show alert-<%=message.type%>" role="alert">
-          <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
-          <strong><%= message.message %></strong>
-
-        </div>
-        <%}%>
-    
-                
-    
-
+          <% if (message) { %> 
+            <div class = "alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+               <button class = "btn-close" type = "button" data-bs-dismiss = "alert" aria-label="Close"></button> 
+            <strong><%= message.message %></strong>
+            </div>
+        <% } %>  
+  
                   <!-- Team Start -->
                   <div class="team">
                     <div class="container">

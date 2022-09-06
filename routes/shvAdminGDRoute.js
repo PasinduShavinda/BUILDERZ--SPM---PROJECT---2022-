@@ -94,7 +94,7 @@ router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
     let new_ThirdProjectPic = '';
 
     // Profile Pic
-    if (req.file) {
+    if (req.files[0]) {
         new_ProfilePic = req.files[0] && req.files[0].filename ? req.files[0].filename : '';
         try {
             fs.unlinkSync(`./uploads/${req.body.old_ProfilePic}`);
@@ -106,7 +106,7 @@ router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
     }
 
     // First Project Pic
-    if (req.file) {
+    if (req.files[1]) {
         new_FirstProjectPic = req.files[1] && req.files[1].filename ? req.files[1].filename : '';
         try {
             fs.unlinkSync(`./uploads/${req.body.old_FirstProjectPic}`);
@@ -118,7 +118,7 @@ router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
     }
 
     // Second Project Pic
-    if (req.file) {
+    if (req.files[2]) {
 
         new_SecondProjectPic = req.files[2] && req.files[2].filename ? req.files[2].filename : '';
 
@@ -132,7 +132,7 @@ router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
     }
 
     // Third Project Pic
-    if (req.file) {
+    if (req.files[3]) {
 
         new_ThirdProjectPic = req.files[3] && req.files[3].filename ? req.files[3].filename : '';
 
@@ -175,29 +175,11 @@ router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
 router.get('/deleteAdminGD/:id', (req, res) => {
     let id = req.params.id;
     AdminGD.findByIdAndRemove(id, (err, result) => {
-        if (result.ProfilePic != '') {
+        if (result.ProfilePic != '' || result.FirstProjectPic != '' || result.SecondProjectPic != '' || result.ThirdProjectPic != '') {
             try {
                 fs.unlinkSync(`./uploads/${result.ProfilePic}`);
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        if (result.FirstProjectPic != '') {
-            try {
                 fs.unlinkSync(`./uploads/${result.FirstProjectPic}`);
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        if (result.SecondProjectPic != '') {
-            try {
                 fs.unlinkSync(`./uploads/${result.SecondProjectPic}`);
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        if (result.ThirdProjectPic != '') {
-            try {
                 fs.unlinkSync(`./uploads/${result.ThirdProjectPic}`);
             } catch (err) {
                 console.log(err);
@@ -212,9 +194,24 @@ router.get('/deleteAdminGD/:id', (req, res) => {
             };
             res.redirect("/allAdminGD");
         }
-
     });
 });
+
+// Get Specific Garden Designer Projects
+router.get("/adminGDProj/:id",(req,res)=>{
+    let id=req.params.id;
+    AdminGD.findById(id,(err,adminGds)=>{
+        if(err){
+            res.json({ message: err.message })
+        }else{
+            res.render("shvSpecificGDProjects.ejs",{
+                title:'Get Specific Projects',
+                adminGds:adminGds, 
+            })
+        }
+    })
+  })
+
 
 // Home Page button click event
 router.get('/', (req, res) => {
@@ -222,6 +219,24 @@ router.get('/', (req, res) => {
     {
       title: "Admin Home Page"
     });
+});
+
+//search
+router.get('/searchAdminGDs',(req,res)=>{
+    try {
+        AdminGD.find({$or:[{Name:{'$regex':req.query.GDsearch}},{Phone:{'$regex':req.query.GDsearch}}]},(err,adminGds)=>{
+                 if(err){
+                     console.log(err);
+                 }else{
+                    res.render('shvViewAllGardenDesigners', {
+                        title: 'All Garden Designers',
+                        adminGds: adminGds
+                    })
+                 }
+             })
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 module.exports = router;

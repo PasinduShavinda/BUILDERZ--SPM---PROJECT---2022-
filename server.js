@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
-//const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -41,9 +40,6 @@ app.use(express.static("public"));
 
 // Set template engine
 app.set('view engine', 'ejs');
-
-// Set views folder
-//app.set('views', path.join(__dirname, 'views'));
 
 // route prefix
 app.use("", require("./routes/shvAdminGDRoute"));

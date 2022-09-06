@@ -1,66 +1,74 @@
-<%- include('layout/header')  %> 
-
-<div>
-    <div class = "row my-4">
-       <div class = "col-lg-12">
-        <% if (message) { %> 
-            <div class = "alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
-               <button class = "btn-close" type = "button" data-bs-dismiss = "alert" aria-label="Close"></button> 
-            <strong><%= message.message %></strong>
+<%- include('layout/header')%>
+    <div>
+        <div>
+            <div>
+                <% if (message) { %> 
+                    <div class = "alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+                       <button class = "btn-close" type = "button" data-bs-dismiss = "alert" aria-label="Close"></button> 
+                    <strong><%= message.message %></strong>
+                    </div>
+                <% } %>  
+    <!-- Team Start -->
+    <div class="team">
+        <form class="form-inline my-2 my-lg-0" action="/searchAdminGDs" method="get">
+            <input class="form-control mr-sm-2" type="text" name="GDsearch" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        <div class="container">
+            <div class="section-header text-center">
+                <p>Our Team</p>
+                <h2>Meet Our Garden Designers</h2>
             </div>
-        <% } %>  
-        <div class="table-responsive">
-            <% if (adminGds != '') { %>
-                <table class="table table-striped text-center">
-                    <thead>
-                        <tr class = "table-dark">
-                          
-                            <th>ID</th>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Qualifications</th>
-                            <th>First Project Pic</th>
-                            <th>FirstProjectDesc</th>
-                            <th>Second Project Pic</th>
-                            <th>SecondProjectDesc</th>
-                            <th>Third Project Pic</th>
-                            <th>ThirdProjectDesc</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% adminGds.forEach((row, index) => { %>
-                            <tr>
-                      
-                                <td><%= row._id %></td>
-                                <td><img src = "<%= row.ProfilePic %>" width = "50" class ="img-thumbnail"/></td>
-                                <td><%= row.Name %></td>
-                                <td><%= row.Email %></td>
-                                <td><%= row.Phone %></td>
-                                <td><%= row.Qualifications %></td>
-                                <td><img src = "<%= row.FirstProjectPic %>" width = "50" class ="img-thumbnail"/></td>
-                                <td><%= row.FirstProjectDesc %></td>
-                                <td><img src = "<%= row.SecondProjectPic %>" width = "50" class ="img-thumbnail"/></td>
-                                <td><%= row.SecondProjectDesc %></td>
-                                <td><img src = "<%= row.ThirdProjectPic %>" width = "50" class ="img-thumbnail"/></td>
-                                <td><%= row.ThirdProjectDesc %></td>
-
-                                <td>
-                                    <a href = "/editAdminGD/<%= row._id %>" class = "text-success"><i class = "fas fa-edit fa-lg mx-1"></i></a>
-                                    <a href = "/deleteAdminGD/<%= row._id %>" class = "text-success"><i class = "fas fa-trash fa-lg mx-1"></i></a>
-                                </td>
-                            </tr>
-                        <% }) %>
-                    </tbody>
-                </table>
-            <% } else { %>
-                <h1 class = "text-center text-secondary mt-5">No Garden Designers Found</h1>
-            <% } %> 
+            <div class="row">
+                <%if(adminGds!=''){%>
+                    <% adminGds.forEach((row,index)=>{%>
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item">
+                                <div class="team-img">
+                                    <a href="/adminGDProj/<%=row._id%>"><img
+                                            src="<%=row.ProfilePic%>" alt="Team Image" width="40px"
+                                            height="300px"></a>
+                                </div>
+                                <div class="team-text">
+                                    <h2>
+                                        <%= row.Name%>
+                                    </h2>
+                                    <p>
+                                        <%= row.Phone%>
+                                            <p>
+                            <a href="/editAdminGD/<%=row._id%>"
+                                class="text-success"> <button
+                                    class="btn btn-outline-warning"><i
+                                        class="fa-solid fa-pen-to-square"></i>
+                                    Edit</button></a>
+                            <a href="/deleteAdminGD/<%=row._id%>"
+                                class="text-success"><button
+                                    class="btn btn-outline-danger"><i
+                                        class="fa-solid fa-trash"></i>Delete</button>
+                                     </a>
+                                </div>
+                                <div class="team-social">
+                                    <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="social-fb" href=""><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="social-li" href=""><i
+                                            class="fab fa-linkedin-in"></i></a>
+                                    <a class="social-in" href=""><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <%})%>
+                            <%}else{%>
+                                <h1 class="text-center text-secondary mt-5">No Architect found in
+                                    the database!</h1>
+                                <%}%>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Team End -->
+            </div>
         </div>
-       </div>
     </div>
-</div>
 
-<%- include('layout/footer')  %>
+    <%- include('layout/footer')%>
