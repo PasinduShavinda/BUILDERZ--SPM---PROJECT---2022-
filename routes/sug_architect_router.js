@@ -261,6 +261,22 @@ router.get('/delete_architect/:id',(req,res)=>{
 
 
 
+router.get("/project_architect/:id",(req,res)=>{
+  let id=req.params.id;
+  Architect.findById(id,(err,data)=>{
+      if(err){
+          res.redirect("/All_Architect")
+      }else{
+          res.render("sug_architects_project.ejs",{
+              title:'Edit architects',
+              data:data, 
+          })
+      }
+  })
+})
+
+
+
 
 
 

@@ -37,7 +37,7 @@ app.use((req, res, next) =>{
 });
 
 app.use(express.static("uploads"));
-
+app.use(express.static("public"));
 
 // Set template engine
 app.set('view engine', 'ejs');
