@@ -1,0 +1,73 @@
+<%- include('layout/header')%>
+<div >
+    <div class="row">
+        <div class="col-lg-12">
+          <% if (message) { %> 
+            <div class = "alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+               <button class = "btn-close" type = "button" data-bs-dismiss = "alert" aria-label="Close"></button> 
+            <strong><%= message.message %></strong>
+            </div>
+        <% } %> 
+<%if(data!=''){%>
+
+  <table class="table my-3">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">#</th>
+        <th scope="col">architect</th>
+        <th scope="col">mobile</th>
+        <th scope="col">email</th>
+        <th scope="col">qualifications</th>
+        <th scope="col">profile_pic</th>
+        <th scope="col">project01_img</th>
+        <th scope="col">project01_disc</th>
+        <th scope="col">project02_img</th>
+        <th scope="col">project02_disc</th>
+        <th scope="col">project03_img</th>
+        <th scope="col">project03_disc</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+   
+
+      <% data.forEach((row,index)=>{%>
+
+        <tr class="align-middle">
+          <th scope="row"><%=index%></th>
+          <td><img src="<%=row.profile_pic%>" width="50" class="img-thubnail"/></td>
+          <td><%= row.architect%></td>
+          <td><%= row.mobile%></td>
+          <td><%= row.email%></td>
+          <td><%= row.qualifications %></td>
+          <td><img src="<%=row.project01_img %>" width="50" class="img-thubnail"/></td>
+          <td><%= row.project01_disc %></td>
+          <td><img src="<%=row.project02_img %>" width="50" class="img-thubnail"/></td>
+          <td><%= row.project02_disc %></td>
+          <td><img src="<%=row.project03_img %>" width="50" class="img-thubnail"/></td>
+          <td><%= row.project03_disc %></td>
+          <td><a href="/edit_architect/<%=row._id%>" class="text-success"><i class="fa-solid fa-pen-to-square"></i> </a>
+            <a href="/delete_architect/<%=row._id%>" class="text-success"><i class="fa-solid fa-trash"></i>
+  
+            </a></td>
+  
+        </tr>
+      <%})%>
+
+
+      
+  
+    </tbody>
+  </table>
+  <%}else{%>
+    <h1 class="text-center text-secondary mt-5">No Architect found in the database!</h1>
+       <%}%>    
+              
+              
+
+
+        </div>
+    </div>
+</div>
+      
+ <%- include('layout/footer')%>   

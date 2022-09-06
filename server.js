@@ -47,6 +47,7 @@ app.set('view engine', 'ejs');
 
 // route prefix
 app.use("", require("./routes/shvAdminGDRoute"));
+app.use("", require("./routes/sug_architect_router"));
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
