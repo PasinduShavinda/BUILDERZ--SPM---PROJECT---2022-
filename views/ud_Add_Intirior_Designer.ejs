@@ -1,0 +1,108 @@
+<%- include('layout/header')%>
+<div class = "Add_IntiriorDesignerForm">
+    <div class="container">
+        <div>
+            <div>
+                <h3 class="container mt-5 d-flex justify-content-center">Add Intirior Designer</h3>
+
+                <form action="/addIntiriorDesigner" method="post" id="ädd-form" enctype="multipart/form-data">
+                    <div class="form-group row mt-3">
+                        <label for="architect" class="col-sm-2 col-form-label"> Intirior Designer's Name</label>
+                        <div class="col-sm-8">
+                           <input type="text" class="form-control" name="Name" placeholder="Name" required></center>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label for="Email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" name="Email" placeholder="Email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label for="Phone" class="col-sm-2 col-form-label">Mobile Number</label>
+                        <div class="col-sm-8">
+                            <input type="mobile" class="form-control" name="Phone" placeholder="mobile" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row mt-3">
+                        <label for="Qualifications" class="col-sm-2 col-form-label"> Qualifications</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="Qualifications" placeholder="Qualifications" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row mt-3">
+                        <label for="ProfilePicture" class="col-sm-2 col-form-label"> Profile picture</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" name="ProfilePicture" placeholder="Select Image" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label for="FirstProjectPicture" class="col-sm-2 col-form-label"> Project 01 Image</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" name="FirstProjectPicture" placeholder="Select Image" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label for="FirstProjectDiscrip" class="col-sm-2 col-form-label">Project 01 Description </label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" class="form-control" name="FirstProjectDiscrip"
+                                placeholder="First Project Description" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label for="SecondProjectPicture" class="col-sm-2 col-form-label">Project 02 Image</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" name="SecondProjectPicture" placeholder="Select Image">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label for="SecondProjectDiscrip" class="col-sm-2 col-form-label">Project 02 Description</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" class="form-control" name="SecondProjectDiscrip"
+                                placeholder="Second Project Description" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+
+                        <label for="ThirdProjectPicture" class="col-sm-2 col-form-label">Project 03 Image</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" name="ThirdProjectPicture" placeholder="Select Image">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label for="ThirdProjectDiscrip" class="col-sm-2 col-form-label">Project 03 Description</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" class="form-control" name="ThirdProjectDiscrip"
+                                placeholder="Third Project Description" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <center>
+                    <button type="submit" class="btn btn-success col-sm-1 mt-3"><b>Submit</b></button>
+                    </center>
+                </form>
+            <center>
+                <a href='/addIntiriorDesigner'><button class='btn btn-info col-sm-1 mt-3'><b>Clear</b></button></a>
+            </center>
+                <center>
+                <a href='/'><button class='btn btn-info col-sm-1 mt-3'><b>Back</b></button></a>
+            </center>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+    <%- include('layout/footer')%>
