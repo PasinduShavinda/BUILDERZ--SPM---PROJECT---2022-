@@ -3,6 +3,7 @@ const router = express.Router();
 const AdminGD = require('../models/shvAdminGDModel.js');
 const multer = require('multer');
 const fs = require('fs');
+const { check, validationResult } = require('express-validator');
 
 // Image Uploading 
 const upload = multer({
@@ -11,9 +12,20 @@ const upload = multer({
             cb(null, './uploads');
         },
         filename: (req, file, cb) => {
-            cb(null, file.fieldname + '_' + file.originalname);
+            cb(null, file.fieldname + '_' + Date.now() + '_'+ file.originalname);
         }
     }),
+    limits: {
+        fileSize: 10000000 // max file size 20MB 
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(png|jpeg|jpg)$/)) {
+          return cb(
+            new Error('Only PNG and JPEG Images Allowed.')
+          );
+        }
+        cb(undefined, true); // continue with upload
+      }
 });
 
 // Get All users Route
@@ -38,7 +50,29 @@ router.get('/addAdminGD', (req, res) => {
 });
 
 // Add Garden Designers Route
-router.post('/addAdminGD', upload.any(), (req, res) => {
+router.post('/addAdminGD', upload.any(), [ 
+    
+   check('Name')
+    .matches(/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/) 
+    .withMessage('Invalid Name.. Please enter correct name !!'),
+
+   check('Email')
+    .matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+    .withMessage('Email is not valid.. Please enter correct email !! !'),
+
+   check('Phone')
+    .isMobilePhone()
+    .isLength({ min: 10, max:10})
+    .withMessage('Mobile number is not valid.. Please enter correct mobile number !! !'),
+
+ ],(req, res) => {
+    const errors = validationResult(req)
+    if(!errors.isEmpty()) {
+        const alert = errors.array()
+        res.render('shvAddGardenDesigners', {
+            alert
+        })
+    }else{
     const adminGd = new AdminGD({
         Name: req.body.Name,
         Email: req.body.Email,
@@ -63,6 +97,7 @@ router.post('/addAdminGD', upload.any(), (req, res) => {
             res.redirect("/allAdminGD");
         }
     })
+  }
 });
 
 // Edit User Router

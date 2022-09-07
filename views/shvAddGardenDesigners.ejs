@@ -5,6 +5,16 @@
             <div>
                 <h3 class="container mt-5 d-flex justify-content-center">Add Garden Designer</h3>
 
+                <% if(typeof alert != 'undefined') { %>
+                    <% alert.forEach(function(error) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong><%= error.msg %></strong>
+                            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                    <% }) %>
+                <% } %>
                 <form action="/addAdminGD" method="post" id="ädd-form" enctype="multipart/form-data">
                     <div class="form-group row mt-3">
                         <label for="architect" class="col-sm-2 col-form-label"> Garden Designer's Name</label>

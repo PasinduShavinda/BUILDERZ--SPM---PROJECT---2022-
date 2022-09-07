@@ -30,20 +30,16 @@ const AdminGardenDesignerSchema  = new mongoose.Schema({
         required: true,
     },
     SecondProjectPic: {
-        type: String,
-        required: true,
+        type: String
     },
     SecondProjectDesc:{
-        type: String,
-        required: true,
+        type: String
     },
     ThirdProjectPic: {
-        type: String,
-        required: false,
+        type: String
     },
     ThirdProjectDesc:{
-        type: String,
-        required: false,
+        type: String
     },
     Created: {
         type: Date,
