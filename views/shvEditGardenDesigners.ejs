@@ -1,8 +1,9 @@
 <%- include('layout/header')%>
+<div class = "frameEditGDForm">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="container">Update Garden Designer (<%= adminGd.Name %>)</h3>
+                <h3 class="container mt-5 d-flex justify-content-center">Update Garden Designer (<%= adminGd.Name %>)</h3>
                 <form action="/updateAdminGD/<%= adminGd._id %>" method="post" id="ädd-form"
                     enctype="multipart/form-data">
                     <div class="form-group row mt-3">
@@ -87,11 +88,11 @@
                         <input type="text" class="form-control"  name="ThirdProjectDesc" placeholder="Third Project Description"  value="<%= adminGd.ThirdProjectDesc %>">
                         </div>
                     </div>
-                    <input type="submit" name="submit" value="Update Garden Designer" class="btn btn-success" />
+                   <center> <input type="submit" name="submit" value="Update Garden Designer" class="btn btn-success" /></center>
                 </form>
             </div>
         </div>
     </div>
-
+</div>
 
     <%- include('layout/footer')%>
