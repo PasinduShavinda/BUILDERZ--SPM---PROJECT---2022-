@@ -30,19 +30,19 @@ const InteriorDesignerSchema = new mongoose.Schema({
   },
   SecondProjectPicture: {
     type: String,
-    required: true,
+    // required: true,
   },
   SecondProjectDiscrip: {
     type: String,
-    required: true,
+    // required: true,
   },
   ThirdProjectPicture: {
     type: String,
-    required: false,
+    // required: false,
   },
   ThirdProjectDiscrip: {
     type: String,
-    required: false,
+    // required: false,
   },
   Created: {
     type: Date,
