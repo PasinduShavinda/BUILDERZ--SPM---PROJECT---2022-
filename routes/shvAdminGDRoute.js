@@ -17,17 +17,8 @@ const upload = multer({
     }
   }),
   limits: {
-    fileSize: 10000000 // max file size 20MB 
+    fileSize: 10000000 // max file size 10MB
   },
-  // fileFilter(req, file, cb) {
-  //     if (!file.originalname.match(/\.(png|jpeg|jpg)$/)) {
-  //       return cb(
-  //         new Error('Only PNG and JPEG Images Allowed.')
-  //       );
-  //     }
-  //     cb(undefined, true); // continue with upload
-  //   }
-
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   }
@@ -47,8 +38,7 @@ function checkFileType(file, cb) {
   }
 }
 
-
-// Get All users Route
+// Get All Garden Designers Route
 router.get("/allAdminGD", (req, res) => {
   AdminGD.find().exec((err, adminGds) => {
     if (err) {
@@ -62,11 +52,6 @@ router.get("/allAdminGD", (req, res) => {
   });
 });
 
-router.get("/addAdminGD", (req, res) => {
-  res.render("shvAddGardenDesigners", {
-    title: "Add Garden Designers",
-  });
-});
 
 // Add Garden Designers Route
 router.post('/addAdminGD', upload.any(), [
@@ -118,7 +103,6 @@ router.post('/addAdminGD', upload.any(), [
   }
 });
 
-// Edit User Router
 router.get("/editAdminGD/:id", (req, res) => {
   let id = req.params.id;
   AdminGD.findById(id, (err, adminGd) => {
@@ -137,7 +121,7 @@ router.get("/editAdminGD/:id", (req, res) => {
   });
 });
 
-// Update user route
+// Update Garden Designer route
 router.post("/updateAdminGD/:id", upload.any(), (req, res) => {
   let id = req.params.id;
   let new_ProfilePic = "";

@@ -102,6 +102,20 @@ router.get("/get_Employee", (req, res) => {
 
 });
 
+//Get All Employees to the Garden Designers Page
+router.get("/addAdminGD", (req, res) => {
+  Employee.find({}, (err, employees) => {
+    if (err) {
+      res.json({message:err.message})
+    } else {
+      res.render("shvAddGardenDesigners", { 
+        title:'Add Garden Designers',
+        employees: employees });
+    }
+  })
+
+});
+
 //Edit employee details route
 router.get('/editEmployee/:id', (req,res) => {
   let id = req.params.id;
