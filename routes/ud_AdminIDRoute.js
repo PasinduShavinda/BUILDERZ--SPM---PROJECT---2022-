@@ -3,6 +3,7 @@ const router = express.Router();
 const IntiriorDesigner = require("../models/ud_AdminIDModel");
 const multer = require("multer");
 const fs = require("fs");
+const { check, validationResult } = require("express-validator");
 
 // Image Uploading................................................................
 const upload = multer({
@@ -11,9 +12,18 @@ const upload = multer({
       cb(null, "./uploads");
     },
     filename: (req, file, cb) => {
-      cb(null, file.fieldname + "_" + file.originalname);
+      cb(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
     },
   }),
+  limits: {
+    fileSize: 10000000, // max file size 20MB
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(png|jpeg|jpg)$/)) {
+      return cb(new Error("Only PNG and JPEG Images Allowed."));
+    }
+    cb(undefined, true); // continue with upload
+  },
 });
 
 // Get All Intirior Designer Route............................................................
@@ -37,36 +47,66 @@ router.get("/addIntiriorDesigner", (req, res) => {
 });
 
 // Add Intirior Designer Route..................................................
-router.post("/addIntiriorDesigner", upload.any(), (req, res) => {
-  const intiriorDesigner = new IntiriorDesigner({
-    Name: req.body.Name,
-    Email: req.body.Email,
-    Phone: req.body.Phone,
-    Qualifications: req.body.Qualifications,
-    ProfilePicture:
-      req.files[0] && req.files[0].filename ? req.files[0].filename : "",
-    FirstProjectPicture:
-      req.files[1] && req.files[1].filename ? req.files[1].filename : "",
-    FirstProjectDiscrip: req.body.FirstProjectDiscrip,
-    SecondProjectPicture:
-      req.files[2] && req.files[2].filename ? req.files[2].filename : "",
-    SecondProjectDiscrip: req.body.SecondProjectDiscrip,
-    ThirdProjectPicture:
-      req.files[3] && req.files[3].filename ? req.files[3].filename : "",
-    ThirdProjectDiscrip: req.body.ThirdProjectDiscrip,
-  });
-  intiriorDesigner.save((err) => {
-    if (err) {
-      res.json({ message: err.message, type: "danger" });
+router.post(
+  "/addIntiriorDesigner",
+  upload.any(),
+  [
+    check("Name")
+      .matches(/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/)
+      .withMessage("Invalid Name.. Please enter correct name !!"),
+
+    check("Email")
+      .matches(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )
+      .withMessage("Email is not valid.. Please enter correct email !! !"),
+
+    check("Phone")
+      .isMobilePhone()
+      .isLength({ min: 10, max: 10 })
+      .withMessage(
+        "Mobile number is not valid.. Please enter correct mobile number !! !"
+      ),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const alert = errors.array();
+      res.render("ud_Add_Intirior_Designer.ejs", {
+        alert,
+      });
     } else {
-      req.session.message = {
-        type: "success",
-        message: "Intirior Designer Added Successfully",
-      };
-      res.redirect("/allIntiriorDesigner");
+      const intiriorDesigner = new IntiriorDesigner({
+        Name: req.body.Name,
+        Email: req.body.Email,
+        Phone: req.body.Phone,
+        Qualifications: req.body.Qualifications,
+        ProfilePicture:
+          req.files[0] && req.files[0].filename ? req.files[0].filename : "",
+        FirstProjectPicture:
+          req.files[1] && req.files[1].filename ? req.files[1].filename : "",
+        FirstProjectDiscrip: req.body.FirstProjectDiscrip,
+        SecondProjectPicture:
+          req.files[2] && req.files[2].filename ? req.files[2].filename : "",
+        SecondProjectDiscrip: req.body.SecondProjectDiscrip,
+        ThirdProjectPicture:
+          req.files[3] && req.files[3].filename ? req.files[3].filename : "",
+        ThirdProjectDiscrip: req.body.ThirdProjectDiscrip,
+      });
+      intiriorDesigner.save((err) => {
+        if (err) {
+          res.json({ message: err.message, type: "danger" });
+        } else {
+          req.session.message = {
+            type: "success",
+            message: "Intirior Designer Added Successfully",
+          };
+          res.redirect("/allIntiriorDesigner");
+        }
+      });
     }
-  });
-});
+  }
+);
 
 // Edit Intirior Designer Router.....................................................
 router.get("/editIntiriorDesigner/:id", (req, res) => {
@@ -95,8 +135,8 @@ router.post("/updateIntiriorDesigner/:id", upload.any(), (req, res) => {
   let new_SecondProjectPicture = "";
   let new_ThirdProjectPicture = "";
 
-  // Profile Picture
-  if (req.file) {
+  // Profile Picture...........
+  if (req.file[0]) {
     new_ProfilePicture =
       req.files[0] && req.files[0].filename ? req.files[0].filename : "";
     try {
@@ -122,7 +162,7 @@ router.post("/updateIntiriorDesigner/:id", upload.any(), (req, res) => {
   }
 
   // Second Project Picture
-  if (req.file) {
+  if (req.file[2]) {
     new_SecondProjectPicture =
       req.files[2] && req.files[2].filename ? req.files[2].filename : "";
 
@@ -136,7 +176,7 @@ router.post("/updateIntiriorDesigner/:id", upload.any(), (req, res) => {
   }
 
   // Third Project Picture
-  if (req.file) {
+  if (req.file[3]) {
     new_ThirdProjectPicture =
       req.files[3] && req.files[3].filename ? req.files[3].filename : "";
 
