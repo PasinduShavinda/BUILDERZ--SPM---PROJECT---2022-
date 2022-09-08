@@ -3,6 +3,7 @@ let multer = require('multer')
 const router=express.Router();
 let Architect= require('../models/sug_architect');
 const { check, validationResult } = require('express-validator');
+
 path = require('path');
 let fs = require('fs');
 let dir = './uploads';
@@ -47,9 +48,6 @@ function checkFileType(file, cb) {
 
 
 
-router.get("/add_Architect",(req,res)=>{
-  res.render("sug_add_architecture.ejs",{title:"add architecture"})
-});
 
 
 
@@ -316,8 +314,6 @@ router.get('/searchAdminArchitects',(req,res)=>{
       console.log(error);
   }
 });
-
-
 
 
 

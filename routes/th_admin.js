@@ -121,4 +121,26 @@ router.get('/editEmployee/:id', (req,res) => {
   });
 });
 
+
+//Get all employee to the add Architect page 
+router.get("/add_Architect", (req, res) => {
+  Employee.find({}, (err, employees) => {
+    if (err) {
+      res.json({message:err.message})
+    } else {
+      res.render("sug_add_architecture.ejs", { 
+        title:"add architecture",
+        employees: employees });
+    }
+  })
+
+});
+
+
+
+
+
+
+
+
 module.exports = router;
