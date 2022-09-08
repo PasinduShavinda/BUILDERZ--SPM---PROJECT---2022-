@@ -3,7 +3,18 @@
     <div class="container">
         <div>
             <div>
-                <h3 class="container mt-5 d-flex justify-content-center">Add Interior Designer</h3>
+                <h3 class="container mt-5 d-flex justify-content-center">Add Intirior Designer</h3>
+                
+               <% if(typeof alert != 'undefined') { %>
+                    <% alert.forEach(function(error) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong><%= error.msg %></strong>
+                            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                    <% }) %>
+                <% } %>
 
                 <form action="/addIntiriorDesigner" method="post" id="ädd-form" enctype="multipart/form-data">
                     <div class="form-group row mt-3">
