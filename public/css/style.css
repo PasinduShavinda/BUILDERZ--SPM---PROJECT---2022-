@@ -2317,3 +2317,13 @@ a:focus {
     margin-top: 20px;
     padding: 15px 10px;
   }
+
+  .required:after {
+    content:" *";
+    color: red;
+  }
+
+  .fontS {
+   font-size: 10pt;
+   color: #9DC162;
+  }
