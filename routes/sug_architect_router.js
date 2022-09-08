@@ -2,10 +2,8 @@ let express = require('express');
 let multer = require('multer')
 const router=express.Router();
 let Architect= require('../models/sug_architect');
- 
-  path = require('path');
-
-
+const { check, validationResult } = require('express-validator');
+path = require('path');
 let fs = require('fs');
 let dir = './uploads';
 
@@ -22,15 +20,30 @@ let upload = multer({
     filename: (req, file, callback) => { callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); }
 
   }),
+  limits: {
+    fileSize: 10000000 // max file size 20MB 
+  },
 
-  fileFilter: (req, file, callback) => {
-    let ext = path.extname(file.originalname)
-    if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
-      return callback(/*res.end('Only images are allowed')*/ null, false)
-    }
-    callback(null, true)
+  fileFilter: (req, file, cb) => {
+   checkFileType(file, cb)
   }
 });
+function checkFileType(file, cb) {
+  // Allowed ext
+  const filetypes = /jpeg|jpg|png/;
+  // Check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // Check mime
+  const mimetype = filetypes.test(file.mimetype);
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb("Error.. Images Only with PNG and JPEG !");
+  }
+}
+
+
 
 
 
@@ -55,23 +68,33 @@ router.get("/add_Architect",(req,res)=>{
   });
 
 
-router.post('/add_Architect', upload.any(), (req, res) => {
+router.post('/add_Architect', upload.any(),[
 
-  if (!req.body && !req.files) {
-    res.json({ success: false });
-  } else {
-    let c;
-    Architect.findOne({}, (err, data) => {
+  check('architect')
+    .matches(/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/)
+    .withMessage('Invalid Name.. Please enter correct name !!'),
 
-      if (data) {
-        c = data.unique_id + 1;
-      } else {
-        c = 1;
-      }
+  check('email')
+    .matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+    .withMessage('Email is not valid.. Please enter correct email !! !'),
 
+  check('mobile')
+    .isLength({ min: 10, max: 10 })
+    .withMessage('Mobile number is not valid.. Please enter correct mobile number !! !'),
+
+], (req, res) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    const alert = errors.array()
+    res.render('sug_add_architecture', {
+      alert
+    })
+  }
+  else {
+ 
       let architect = new Architect({
 
-        unique_id: c,
+      
         architect:req.body.architect,
         mobile:req.body.mobile,
         email:req.body.email,
@@ -87,7 +110,7 @@ router.post('/add_Architect', upload.any(), (req, res) => {
       
       });
 
-      architect.save((err, architect) => {
+      architect.save((err) => {
         if (err)
         res.json({message:err.message,type:'danger'});
         else{
@@ -101,7 +124,7 @@ router.post('/add_Architect', upload.any(), (req, res) => {
 
       });
 
-    }).sort({ _id: -1 }).limit(1);
+  
 
   }
 
