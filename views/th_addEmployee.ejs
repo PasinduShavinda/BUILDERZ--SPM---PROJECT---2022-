@@ -1,0 +1,112 @@
+<%- include('layout/header')%>
+
+<div class="container">
+    <div >
+        <div >
+            <h3 class="container mt-5 d-flex justify-content-center"> Employee Registartion </h3>
+
+            <form action="/add_Employee" method="post" id="ädd-form" enctype="multipart/form-data" >
+              <div  class="form-group row mt-3">
+                
+                <label for="employeeType" class="col-sm-2 col-form-label"> Employee Type</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" name="employeeType" placeholder="Employee Type">
+                </div>
+              </div>
+
+              <div  class="form-group row mt-3">
+                
+                <label for="fullName" class="col-sm-2 col-form-label"> Employee Name</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control" name="fullName" placeholder="Employee Name">
+                </div>
+              </div>
+
+                <div class="form-group row mt-3">
+                  <label for="mobile" class="col-sm-2 col-form-label">Mobile Number</label>
+                  <div class="col-sm-8">
+                  <input type="mobile" class="form-control" name="mobile" aria-describedby="mobile" placeholder="mobile">
+                  </div>
+                </div>
+   
+                <div class="form-group row mt-3">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-8">
+                    <input type="email" class="form-control" name="email" placeholder="email">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row mt-3">
+                    <label for="qualifications" class="col-sm-2 col-form-label"> Qualifications</label>
+                    <div class="col-sm-8">
+                    <input type="qualifications" class="form-control" name="qualifications" placeholder="qualifications">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row mt-3">
+                    <label for="profile_pic" class="col-sm-2 col-form-label"> Profile picture</label>
+                    <div class="col-sm-8">
+                    <input type="file" class="form-control" name="profile_pic" placeholder="Select Image">
+                    </div>
+                  </div>
+
+                  <div class="form-group row mt-3">
+                    <label for="project01_img" class="col-sm-2 col-form-label"> project 01 image</label>
+                    <div class="col-sm-8">
+                    <input type="file" class="form-control" name="project01_img" placeholder="Select Image">
+                    </div>
+                  </div>
+                   
+                  <div class="form-group row mt-3">
+                    <label for="project01_disc" class="col-sm-2 col-form-label">project 01 description </label>
+                    <div class="col-sm-8">
+                    <textarea class="form-control" class="form-control" name="project01_disc" placeholder="project 1 description" rows="3"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mt-3">
+                    <label for="project02_img" class="col-sm-2 col-form-label">project 02 image</label>
+                    <div class="col-sm-8">
+                    <input type="file" class="form-control" name="project02_img" placeholder="Select Image">
+                    </div>
+                  </div>
+                          
+                  <div class="form-group row mt-3">
+                    <label for="project02_disc" class="col-sm-2 col-form-label">projecte 02 description</label>
+                    <div class="col-sm-8">
+                    <textarea class="form-control" class="form-control" name="project02_disc" placeholder="project 2 description" rows="3"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mt-3">
+                    
+                    <label for="project03_img" class="col-sm-2 col-form-label">project 03 image</label>
+                    <div class="col-sm-8">
+                    <input type="file" class="form-control" name="project03_img" placeholder="Select Image">
+                    </div>
+
+                  </div>
+                          
+                  <div class="form-group row mt-3">
+                    <label for="project03_disc" class="col-sm-2 col-form-label" >project 03 description</label>
+                    <div class="col-sm-8">
+                    <textarea class="form-control" class="form-control" name="project03_disc" placeholder="project 3 description"  rows="3"></textarea>
+                    </div>
+                  </div>
+                
+                  <a href="/getEmployee"><button type="submit"  class="btn btn-primary col-sm-2 mt-5">Submit</button></a>
+
+
+              
+              </form>
+        </div>
+    </div>
+
+    <a href="/views/th_viewEmployee.ejs"><button class='btn btn-info col-sm-1 mt-3'><b>View Employee</b></button></a>
+    
+</div>
+      
+
+<%- include('layout/footer')%> 
