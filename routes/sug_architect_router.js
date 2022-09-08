@@ -3,6 +3,8 @@ let multer = require('multer')
 const router=express.Router();
 let Architect= require('../models/sug_architect');
 const { check, validationResult } = require('express-validator');
+const Employee = require('../models/th_employee');
+
 
 path = require('path');
 let fs = require('fs');
@@ -84,9 +86,23 @@ router.post('/add_Architect', upload.any(),[
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     const alert = errors.array()
-    res.render('sug_add_architecture', {
-      alert
-    })
+  
+
+    Employee.find({}, (err, employees) => {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.render("sug_add_architecture.ejs", {
+          title: "add architecture",
+          employees: employees,
+          alert
+        });
+      }
+    });
+  
+
+  
+
   }
   else {
  

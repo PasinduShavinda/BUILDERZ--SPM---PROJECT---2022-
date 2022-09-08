@@ -5,6 +5,8 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const { check, validationResult } = require("express-validator");
+const Employee = require('../models/th_employee');
+
 
 // Image Uploading................................................................
 const upload = multer({
@@ -85,9 +87,18 @@ router.post("/addIntiriorDesigner",
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const alert = errors.array();
-      res.render("ud_Add_Intirior_Designer.ejs", {
-        alert,
+      Employee.find({}, (err, employees) => {
+        if (err) {
+          res.json({ message: err.message });
+        } else {
+          res.render("ud_Add_Intirior_Designer.ejs", {
+            title: "add Intirior Designer",
+            employees: employees,
+            alert
+          });
+        }
       });
+    
     } else {
       const intiriorDesigner = new IntiriorDesigner({
         Name: req.body.Name,

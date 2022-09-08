@@ -5,6 +5,7 @@ const multer = require('multer');
 const fs = require('fs');
 const { check, validationResult } = require('express-validator');
 const path = require('path');
+const Employee = require('../models/th_employee');
 
 // Image Uploading
 const upload = multer({
@@ -73,9 +74,21 @@ router.post('/addAdminGD', upload.any(), [
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     const alert = errors.array()
-    res.render('shvAddGardenDesigners', {
-      alert
-    })
+
+  
+    Employee.find({}, (err, employees) => {
+      if (err) {
+        res.json({ message: err.message });
+      } else {
+        res.render("shvAddGardenDesigners.ejs", {
+          title: "Add Garden Designers",
+          employees: employees,
+          alert
+        });
+      }
+    });
+
+    
   } else {
     const adminGd = new AdminGD({
       Name: req.body.Name,
