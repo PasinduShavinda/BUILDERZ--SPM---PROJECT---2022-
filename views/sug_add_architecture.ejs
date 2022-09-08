@@ -5,6 +5,17 @@
         <div >
             <h3 class="container mt-5 d-flex justify-content-center"> Add Architects</h3>
 
+            <% if(typeof alert != 'undefined') { %>
+              <% alert.forEach(function(error) { %>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong><%= error.msg %></strong>
+                      <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+              <% }) %>
+          <% } %>
+
             <form action="/add_Architect" method="post" id="ädd-form" enctype="multipart/form-data" >
               <div  class="form-group row mt-3">
                 
@@ -87,11 +98,17 @@
                     <textarea class="form-control" class="form-control" name="project03_disc" placeholder="project03_disc"  rows="3"></textarea>
                     </div>
                   </div>
-                  
+                  <center>
+                    <button type="submit" class="btn btn-success col-sm-1 mt-3"><b>Submit</b></button>
+                    </center>
+                </form>
+            <center>
+                <a href='/add_Architect'><button class='btn btn-info col-sm-1 mt-3'><b>Clear</b></button></a>
+            </center>
 
                   
                 
-                <button type="submit"  class="btn btn-primary col-sm-2 mt-5">Submit</button>
+
               
               </form>
         </div>
