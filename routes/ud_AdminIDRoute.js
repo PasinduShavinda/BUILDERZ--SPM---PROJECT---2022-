@@ -3,6 +3,7 @@ const router = express.Router();
 const IntiriorDesigner = require("../models/ud_AdminIDModel");
 const multer = require("multer");
 const fs = require("fs");
+const path = require("path");
 const { check, validationResult } = require("express-validator");
 
 // Image Uploading................................................................
@@ -18,11 +19,24 @@ const upload = multer({
   limits: {
     fileSize: 10000000, // max file size 20MB
   },
-  fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(png|jpeg|jpg)$/)) {
-      return cb(new Error("Only PNG and JPEG Images Allowed."));
+  fileFilter: function (req, file, cb) {
+    function checkFileType(file, cb) {
+      // Allowed ext
+      const filetypes = /jpeg|jpg|png/;
+      // Check ext
+      const extname = filetypes.test(
+        path.extname(file.originalname).toLowerCase()
+      );
+      // Check mime
+      const mimetype = filetypes.test(file.mimetype);
+
+      if (mimetype && extname) {
+        return cb(null, true);
+      } else {
+        cb("Error.. Images Only with PNG and JPEG !");
+      }
     }
-    cb(undefined, true); // continue with upload
+    checkFileType(file, cb);
   },
 });
 
@@ -40,15 +54,14 @@ router.get("/allIntiriorDesigner", (req, res) => {
   });
 });
 
-router.get("/addIntiriorDesigner", (req, res) => {
-  res.render("ud_Add_Intirior_Designer.ejs", {
-    title: "Add IntiriorDesigner",
-  });
-});
+// router.get("/addIntiriorDesigner", (req, res) => {
+//   res.render("ud_Add_Intirior_Designer.ejs", {
+//     title: "Add IntiriorDesigner",
+//   });
+// });
 
 // Add Intirior Designer Route..................................................
-router.post(
-  "/addIntiriorDesigner",
+router.post("/addIntiriorDesigner",
   upload.any(),
   [
     check("Name")
@@ -62,7 +75,7 @@ router.post(
       .withMessage("Email is not valid.. Please enter correct email !! !"),
 
     check("Phone")
-      .isMobilePhone()
+      // .isMobilePhone()
       .isLength({ min: 10, max: 10 })
       .withMessage(
         "Mobile number is not valid.. Please enter correct mobile number !! !"
@@ -223,21 +236,20 @@ router.get("/deleteIntiriorDesigner/:id", (req, res) => {
   let id = req.params.id;
   IntiriorDesigner.findByIdAndRemove(id, (err, result) => {
     if (
-      result.ProfilePicture != '' ||
-      result.FirstProjectPicture != '' ||
-      result.SecondProjectPicture != '' ||
-      result.ThirdProjectPicture != ''
+      result.ProfilePicture != "" ||
+      result.FirstProjectPicture != "" ||
+      result.SecondProjectPicture != "" ||
+      result.ThirdProjectPicture != ""
     ) {
       try {
         fs.unlinkSync(`./uploads/${result.ProfilePicture}`);
-         fs.unlinkSync(`./uploads/${result.FirstProjectPicture}`);
-         fs.unlinkSync(`./uploads/${result.SecondProjectPicture}`);
-         fs.unlinkSync(`./uploads/${result.ThirdProjectPicture}`);
+        fs.unlinkSync(`./uploads/${result.FirstProjectPicture}`);
+        fs.unlinkSync(`./uploads/${result.SecondProjectPicture}`);
+        fs.unlinkSync(`./uploads/${result.ThirdProjectPicture}`);
       } catch (err) {
         console.log(err);
       }
     }
-
 
     // if (result.FirstProjectPicture != "") {
     //   try {
@@ -260,7 +272,6 @@ router.get("/deleteIntiriorDesigner/:id", (req, res) => {
     //     console.log(err);
     //   }
     // }
-
 
     if (err) {
       res.json({ message: err.message });
@@ -288,7 +299,6 @@ router.get("/allIntiriorDesignerProject/:id", (req, res) => {
     }
   });
 });
-
 
 // Home Page button click event
 router.get("/", (req, res) => {
