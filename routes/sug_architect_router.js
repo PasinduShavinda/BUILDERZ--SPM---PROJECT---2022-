@@ -276,6 +276,23 @@ router.get("/project_architect/:id",(req,res)=>{
 })
 
 
+//search
+router.get('/searchAdminArchitects',(req,res)=>{
+  try {
+    Architect.find({$or:[{architect:{'$regex':req.query.Archisearch}},{mobile:{'$regex':req.query.Archisearch}}]},(err,data)=>{
+               if(err){
+                   console.log(err);
+               }else{
+                  res.render('sug_all_architect.ejs', {
+                      title: 'All architects',
+                      data: data
+                  })
+               }
+           })
+  } catch (error) {
+      console.log(error);
+  }
+});
 
 
 

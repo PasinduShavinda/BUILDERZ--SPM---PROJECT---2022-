@@ -12,6 +12,10 @@
   
                   <!-- Team Start -->
                   <div class="team">
+                    <form class="form-inline my-2 my-lg-0" action="/searchAdminArchitects" method="get">
+                      <input class="form-control mr-sm-1" style="margin-left: 700px; margin-top: -22pt;" type="text" name="Archisearch" placeholder="Search">
+                      <button class="btn btn-secondary my-9 my-sm-10" style="margin-top: -22pt;" type="submit">Search</button>
+                  </form>
                     <div class="container">
                         <div class="section-header text-center">
                             <p>Our Team</p>
@@ -29,7 +33,7 @@
                                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                       <div class="team-item">
                                           <div class="team-img">
-                                              <a href="/project_architect/<%=row._id%>"><img src="<%=row.profile_pic%>" alt="Team Image" width="100px" height="350px"></a>
+                                              <a href="/project_architect/<%=row._id%>"><img src="<%=row.profile_pic%>" alt="Team Image" width="50px" height="400px"></a>
                                           </div>
                                           <div class="team-text">
                                             <h2><%= row.architect%></h2>
