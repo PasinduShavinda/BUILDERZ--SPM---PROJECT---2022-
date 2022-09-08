@@ -150,6 +150,19 @@ router.get("/add_Architect", (req, res) => {
 
 });
 
+//Get all employee to the add IntiriorDesigner page 
+router.get("/addIntiriorDesigner", (req, res) => {
+  Employee.find({}, (err, employees) => {
+    if (err) {
+      res.json({ message: err.message });
+    } else {
+      res.render("ud_Add_Intirior_Designer.ejs", {
+        title: "add Intirior Designer",
+        employees: employees,
+      });
+    }
+  });
+});
 
 
 
