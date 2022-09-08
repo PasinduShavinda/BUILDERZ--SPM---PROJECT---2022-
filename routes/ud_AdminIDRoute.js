@@ -136,7 +136,7 @@ router.post("/updateIntiriorDesigner/:id", upload.any(), (req, res) => {
   let new_ThirdProjectPicture = "";
 
   // Profile Picture...........
-  if (req.file[0]) {
+  if (req.files[0]) {
     new_ProfilePicture =
       req.files[0] && req.files[0].filename ? req.files[0].filename : "";
     try {
@@ -149,7 +149,7 @@ router.post("/updateIntiriorDesigner/:id", upload.any(), (req, res) => {
   }
 
   // First Project Picture
-  if (req.file) {
+  if (req.files[1]) {
     new_FirstProjectPicture =
       req.files[1] && req.files[1].filename ? req.files[1].filename : "";
     try {
@@ -162,7 +162,7 @@ router.post("/updateIntiriorDesigner/:id", upload.any(), (req, res) => {
   }
 
   // Second Project Picture
-  if (req.file[2]) {
+  if (req.files[2]) {
     new_SecondProjectPicture =
       req.files[2] && req.files[2].filename ? req.files[2].filename : "";
 
@@ -176,7 +176,7 @@ router.post("/updateIntiriorDesigner/:id", upload.any(), (req, res) => {
   }
 
   // Third Project Picture
-  if (req.file[3]) {
+  if (req.files[3]) {
     new_ThirdProjectPicture =
       req.files[3] && req.files[3].filename ? req.files[3].filename : "";
 
