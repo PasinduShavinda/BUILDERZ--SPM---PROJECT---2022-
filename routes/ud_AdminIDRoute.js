@@ -77,7 +77,6 @@ router.post("/addIntiriorDesigner",
       .withMessage("Email is not valid.. Please enter correct email !! !"),
 
     check("Phone")
-      // .isMobilePhone()
       .isLength({ min: 10, max: 10 })
       .withMessage(
         "Mobile number is not valid.. Please enter correct mobile number !! !"
@@ -87,6 +86,7 @@ router.post("/addIntiriorDesigner",
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const alert = errors.array();
+      
       Employee.find({}, (err, employees) => {
         if (err) {
           res.json({ message: err.message });
