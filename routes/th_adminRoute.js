@@ -94,12 +94,12 @@ const upload = multer({
       }
     });
 
-
 router.get("/employee_Management", (req, res) => {
-      res.render("th_Home", {
-        title: "Home Page",
-      });
+  res.render("th_Home", {
+      title: "Home Page",
+  });
 });
+
 
 router.get("/add_Employee", (req, res) => {
   res.render("th_addEmployee", {
