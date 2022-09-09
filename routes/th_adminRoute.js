@@ -263,4 +263,55 @@ router.get("/delete_Employee/:id", (req, res) => {
   });
 });
 
+
+
+
+//Get all employee to architectues page
+router.get("/add_Architect", (req, res) => {
+  Employee.find({}, (err, employees) => {
+    if (err) {
+      res.json({message:err.message})
+    } else {
+      res.render("sug_add_architecture.ejs", { 
+        
+        employees: employees });
+    }
+  })
+
+});
+
+//Get all employee route Interior designers page
+router.get("/addIntiriorDesigner", (req, res) => {
+  Employee.find({}, (err, employees) => {
+    if (err) {
+      res.json({message:err.message})
+    } else {
+      res.render("ud_Add_Intirior_Designer.ejs", { 
+        
+        employees: employees });
+    }
+  })
+
+});
+
+
+
+//Get all employee route garden designer page
+router.get("/addAdminGD", (req, res) => {
+  Employee.find({}, (err, employees) => {
+    if (err) {
+      res.json({message:err.message})
+    } else {
+      res.render("shvAddGardenDesigners.ejs", { 
+       
+        employees: employees });
+    }
+  })
+
+});
+
+
+
+
+
 module.exports = router;
