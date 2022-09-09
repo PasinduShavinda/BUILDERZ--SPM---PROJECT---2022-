@@ -48,12 +48,12 @@
                                 <td><img src="<%= row.project03_img %>" width="50" class="img-proj3" mt-1 /></td>
                                 <td><%= row.project03_disc %></td>
                                 <td>
-                                    <a href=""
+                                    <a href="/edit_Employee/<%= row._id %>"
                                         class="text-success"> <button
                                             class="btn btn-outline-warning"><i
                                                 class="fa-solid fa-pen-to-square"></i>
                                             Edit</button></a>
-                                    <a href=""
+                                    <a href="delete_Employee/<%= row._id %>"
                                         class="text-success"><button
                                             class="btn btn-outline-danger"><i
                                                 class="fa-solid fa-trash"></i>Delete</button>
@@ -73,3 +73,4 @@
     </div>
 </div>
 
+<%- include('layout/footer') %>

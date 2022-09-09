@@ -1,28 +1,16 @@
 <%- include('layout/header')%>
 
-<div class="frameAddGDForm">
 <div class="container">
     <div >
         <div >
-            <h3 class="container mt-5 d-flex justify-content-center"> Employee Registration </h3>
+            <h3 class="container mt-5 d-flex justify-content-center"> Edit Employee Details </h3>
 
-            <% if(typeof alert != 'undefined') { %>
-              <% alert.forEach(function(error) { %>
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <strong><%= error.msg %></strong>
-                      <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-              <% }) %>
-          <% } %>
-
-            <form action="/add_Employee" method="post" id="ädd-form" enctype="multipart/form-data" >
+            <form action="/update_Employee/<%= employees._id %>" method="post" id="ädd-form" enctype="multipart/form-data" >
               <div  class="form-group row mt-3">
                 
                 <label for="employeeType" class="col-sm-2 col-form-label"> Employee Type</label>
                 <div class="col-sm-8">
-                <input type="text" class="form-control" name="employeeType" placeholder="Employee Type">
+                <input type="text" class="form-control" name="employeeType" placeholder="Employee Type" value="<%= employees.employeeType %>">
                 </div>
               </div>
 
@@ -30,21 +18,21 @@
                 
                 <label for="fullName" class="col-sm-2 col-form-label"> Employee Name</label>
                 <div class="col-sm-8">
-                <input type="text" class="form-control" name="fullName" placeholder="Employee Name">
+                <input type="text" class="form-control" name="fullName" placeholder="Employee Name" value="<%= employees.fullName %>">
                 </div>
               </div>
 
                 <div class="form-group row mt-3">
                   <label for="mobile" class="col-sm-2 col-form-label">Mobile Number</label>
                   <div class="col-sm-8">
-                  <input type="mobile" class="form-control" name="mobile" aria-describedby="mobile" placeholder="mobile">
+                  <input type="mobile" class="form-control" name="mobile" aria-describedby="mobile" placeholder="mobile" value="<%= employees.mobile %>">
                   </div>
                 </div>
    
                 <div class="form-group row mt-3">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-8">
-                    <input type="email" class="form-control" name="email" placeholder="email">
+                    <input type="email" class="form-control" name="email" placeholder="email" value="<%= employees.email %>">
                     </div>
                   </div>
 
@@ -52,7 +40,7 @@
                   <div class="form-group row mt-3">
                     <label for="qualifications" class="col-sm-2 col-form-label"> Qualifications</label>
                     <div class="col-sm-8">
-                    <input type="qualifications" class="form-control" name="qualifications" placeholder="qualifications">
+                    <input type="qualifications" class="form-control" name="qualifications" placeholder="qualifications" value="<%= employees.qualifications %>">
                     </div>
                   </div>
 
@@ -60,7 +48,9 @@
                   <div class="form-group row mt-3">
                     <label for="profile_pic" class="col-sm-2 col-form-label"> Profile picture</label>
                     <div class="col-sm-8">
-                    <input type="file" class="form-control" name="profile_pic" placeholder="Select Image">
+                    <input type="file" class="form-control" name="profile_pic" placeholder="Select Image" >
+                    <img src="/<%= employees.profile_pic  %>" width="100" class="profile_pic" />
+                    <input type="hidden" name="old-profile_pic" value="<%= employees.profile_pic %>" />
                     </div>
                   </div>
 
@@ -68,13 +58,15 @@
                     <label for="project01_img" class="col-sm-2 col-form-label"> Project 01 Image</label>
                     <div class="col-sm-8">
                     <input type="file" class="form-control" name="project01_img" placeholder="Select Image">
+                    <img src="/<%= employees.project01_img  %>" width="100" class="project01_img" />
+                    <input type="hidden" name="old-project01_img" value="<%= employees.project01_img %>" />
                     </div>
                   </div>
                    
                   <div class="form-group row mt-3">
                     <label for="project01_disc" class="col-sm-2 col-form-label">Project 01 Description </label>
                     <div class="col-sm-8">
-                    <textarea class="form-control" class="form-control" name="project01_disc" placeholder="project 1 description" rows="3"></textarea>
+                        <input type="text" class="form-control"  name="project01_disc" placeholder="project 1 description"  value="<%= employees.project01_disc %>">
                     </div>
                   </div>
 
@@ -82,13 +74,15 @@
                     <label for="project02_img" class="col-sm-2 col-form-label">Project 02 Image</label>
                     <div class="col-sm-8">
                     <input type="file" class="form-control" name="project02_img" placeholder="Select Image">
+                    <img src="/<%= employees.project02_img  %>" width="100" class="project02_img" />
+                    <input type="hidden" name="old-project01_img" value="<%= employees.project01_img %>" />
                     </div>
                   </div>
                           
                   <div class="form-group row mt-3">
-                    <label for="project02_disc" class="col-sm-2 col-form-label">Projec 02 Description</label>
+                    <label for="project02_disc" class="col-sm-2 col-form-label">Project 02 Description</label>
                     <div class="col-sm-8">
-                    <textarea class="form-control" class="form-control" name="project02_disc" placeholder="project 2 description" rows="3"></textarea>
+                        <input type="text" class="form-control"  name="project02_disc" placeholder="project 2 description"  value="<%= employees.project02_disc %>">
                     </div>
                   </div>
 
@@ -97,6 +91,8 @@
                     <label for="project03_img" class="col-sm-2 col-form-label">Project 03 Image</label>
                     <div class="col-sm-8">
                     <input type="file" class="form-control" name="project03_img" placeholder="Select Image">
+                    <img src="/<%= employees.project03_img  %>" width="100" class="project03_img" />
+                    <input type="hidden" name="old-project01_img" value="<%= employees.project01_img %>" />
                     </div>
 
                   </div>
@@ -104,25 +100,20 @@
                   <div class="form-group row mt-3">
                     <label for="project03_disc" class="col-sm-2 col-form-label" >Project 03 Description</label>
                     <div class="col-sm-8">
-                    <textarea class="form-control" class="form-control" name="project03_disc" placeholder="project 3 description"  rows="3"></textarea>
+                        <input type="text" class="form-control"  name="project03_disc" placeholder="project 3 description"  value="<%= employees.project03_disc %>">
                     </div>
                   </div>
+                
+                  <!-- <button type="submit"  class="btn btn-primary col-sm-2 mt-5">Update</button> -->
 
-                  <center>
-                    <button type="submit" class="btn btn-success col-sm-1 mt-3"><b>Submit</b></button>
-                    </center>
-                  </form>
+                  <center> <input type="submit" name="submit" value="Update Employee" class="btn btn-success" /></center>
 
-                <center>
-                    <a href='/add_Employee'><button class='btn btn-info col-sm-1 mt-3'><b>Clear</b></button></a>
-                </center>
-
+                
 
               
-             
+              </form>
         </div>
     </div>
-</div>
 </div>
       
 
