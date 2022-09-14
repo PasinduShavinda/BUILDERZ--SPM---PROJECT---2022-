@@ -57,7 +57,7 @@ function checkFileType(file, cb) {
 
 
 
-router.post('/client_project_architects', upload.any(),[
+router.post('/client_project_architects/:id', upload.any(),[
 
   check('Client_Name')
     .matches(/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/)
@@ -73,7 +73,18 @@ router.post('/client_project_architects', upload.any(),[
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     const alert = errors.array()
-    
+    let id=req.params.id;
+    Architect.findById(id,(err,data)=>{
+      if(err){
+        res.json({ message: err.message });
+      }else{
+          res.render("sug_add_requirement.ejs",{
+              
+              data:data, 
+              alert 
+          })
+      }
+  })
 
 
     
