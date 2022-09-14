@@ -27,33 +27,33 @@ const architectRequirementSchema=new mongoose.Schema({
 },
     Location:{
     type:String,
-    required:true,
+    
 },
 
 Plan_of_the_Land:{
     type:String,
-    required:true,
+    
     
 },
 Bed_Rooms:{
     type:String,
-    required:true,
+
    
 },
 
 Bathrooms:{
     type:String,
-    required:true,
+   
     
 },
 Parking_Area:{
     type:String,
-    required:true,
+    
     
 },
 Other_Requirements:{
     type:String,
-    required:true
+    
     
 },
 })

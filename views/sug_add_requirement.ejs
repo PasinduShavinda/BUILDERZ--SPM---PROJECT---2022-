@@ -55,11 +55,11 @@
             <!-- Blog End -->
                   
                 
-<div class = "frameAddArchiForm">
+<div class = "frameAddArchirequirmentsForm">
     <div class="container">
         <div >
             <div >
-                <h3 class="container mt-5 d-flex justify-content-center"> Add Architects</h3>
+                <h2 class="container mt-5 d-flex justify-content-center">Architecture  Requirements</h2>
     
                 <% if(typeof alert != 'undefined') { %>
                   <% alert.forEach(function(error) { %>
@@ -99,7 +99,13 @@
                       <div class="form-group row mt-3">
                         <label for="Builging_Type" class="col-sm-2 col-form-label required">Builging_Type</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" name="Builging_Type" placeholder="Builging_Type" required>
+                        <select class="form-control" name="Builging_Type" placeholder="Builging_Type" required>
+                          <option value="" selected disabled hidden>Choose here</option>
+                          <option value="Buliding for House"> Buliding for House</option>
+                          <option value="Buliding for Office"> Buliding for Office</option>
+                           <option value="Building for Business">Building for Business</option>
+                            <option value="Other">Other</option>
+                        </select>
                         </div>
                       </div>
     
@@ -107,21 +113,25 @@
                       <div class="form-group row mt-3">
                         <label for="No_of_floors" class="col-sm-2 col-form-label required">No_of_floors</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" name="No_of_floors" placeholder="No_of_floors" required>
+                        <input type="number" class="form-control" name="No_of_floors" placeholder="No_of_floors" required>
                         </div>
                       </div>
     
                       <div class="form-group row mt-3">
                         <label for="Estimated_Budget" class="col-sm-2 col-form-label required">Estimated_Budget</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" name="Estimated_Budget" placeholder="Estimated_Budget"required>
+                        <input type="number" class="form-control" name="Estimated_Budget" placeholder="Rs."required>
                         </div>
                       </div>
                        
+                      <br/>
+                      <br/>
+                      <h4>Land Details</h4>
+
                       <div class="form-group row mt-3">
-                        <label for="Location" class="col-sm-2 col-form-label required">Location</label>
+                        <label for="Location" class="col-sm-2 col-form-label">Location</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" class="form-control" name="Location" placeholder="Location"  required>
+                        <input type="text" class="form-control" class="form-control" name="Location" placeholder="Location">
                         </div>
                       </div>
     
@@ -131,11 +141,14 @@
                         <input type="file" class="form-control" name="Plan_of_the_Land" placeholder="Select file">
                         </div>
                       </div>
-                              
+                        <br/>
+                        <br/>
+
+                      <h4>No of Rooms</h4>
                       <div class="form-group row mt-3">
                         <label for="Bed_Rooms" class="col-sm-2 col-form-label">Bed_Rooms</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control"  name="Bed_Rooms" placeholder="Bed_Rooms" >
+                        <input type="number" class="form-control"  name="Bed_Rooms" placeholder="Bed_Rooms" >
                         </div>
                       </div>
     
@@ -143,22 +156,23 @@
                         
                         <label for="Bathrooms" class="col-sm-2 col-form-label">Bathrooms</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" name="Bathrooms" placeholder="Bathrooms">
+                        <input type="number" class="form-control" name="Bathrooms" placeholder="Bathrooms">
                         </div>
     
                       </div>
 
-              
+                        <br/>
+                        <br/>
 
 
-                      <div class="form-group row mt-3">
+                     
+                        
+                        <input type="checkbox"  name="Parking_Area" placeholder="Parking_Area" value="required">
                         
                         <label for="Parking_Area" class="col-sm-2 col-form-label">Parking_Area</label>
-                        <div class="col-sm-8">
-                        <input type="text" class="form-control" name="Parking_Area" placeholder="Parking_Area">
-                        </div>
+                       
     
-                      </div>
+                      
 
                               
                       <div class="form-group row mt-3">
