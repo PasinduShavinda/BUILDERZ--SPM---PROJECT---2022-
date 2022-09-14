@@ -305,7 +305,7 @@ router.get("/project_architect/:id",(req,res)=>{
           res.redirect("/All_Architect")
       }else{
           res.render("sug_architects_project.ejs",{
-              title:'Edit architects',
+              
               data:data, 
           })
       }
@@ -332,9 +332,63 @@ router.get('/searchAdminArchitects',(req,res)=>{
 });
 
 
+router.get("/client_Home_Page",(req,res)=>{
+  
+          res.render("ClientHomePage.ejs",{
+              title:'client_Home_Page',
+             
+          })
+      
+
+})
 
 
 
+
+router.get("/client_all_architects", (req, res) => {
+  Architect.find({}, (err, data) => {
+    if (err) {
+      res.json({message:err.message})
+    } else {
+      res.render('sug_client_all_architects.ejs', { 
+        title:'client_all_architects',
+        data: data });
+    }
+  })
+
+});
+
+router.get("/client_project_architects/:id",(req,res)=>{
+  let id=req.params.id;
+  Architect.findById(id,(err,data)=>{
+      if(err){
+          res.redirect("client_all_architects.ejs")
+      }else{
+          res.render("sug_add_requirement.ejs",{
+            
+              data:data, 
+          })
+      }
+  })
+})
+
+//search clients
+router.get('/searchClientsArchitects',(req,res)=>{
+  try {
+    Architect.find({$or:[{architect:{'$regex':req.query.Archisearch}},{mobile:{'$regex':req.query.Archisearch}}]},(err,data)=>{
+               if(err){
+                   console.log(err);
+               }else{
+                  res.render('sug_client_all_architects.ejs', {
+                      title: 'All architects',
+                      data: data
+                  })
+               }
+           })
+  } catch (error) {
+      console.log(error);
+  }
+});
 
 
 
@@ -342,3 +396,4 @@ router.get('/searchAdminArchitects',(req,res)=>{
 
 
 module.exports=router;
+

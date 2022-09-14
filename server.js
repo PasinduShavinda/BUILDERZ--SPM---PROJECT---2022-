@@ -50,6 +50,7 @@ app.use("", require("./routes/ud_AdminIDRoute"));
 app.use("", require("./routes/th_adminRoute"));
 app.use("", require("./routes/th_adminRoute"));
 app.use("", require("./routes/shvClientGDRoute"));
+app.use("", require("./routes/sug_architects_requirements"));
 
 
 app.listen(PORT, () => {
