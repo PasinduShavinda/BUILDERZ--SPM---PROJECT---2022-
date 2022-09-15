@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Employee = require('../models/th_employee');
+const Employee = require('../models/th_employeeModel');
 const path= require('path');
 const multer = require('multer');
 const { check, validationResult } = require('express-validator');
