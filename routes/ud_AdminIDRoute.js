@@ -5,7 +5,7 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const { check, validationResult } = require("express-validator");
-const Employee = require('../models/th_employee');
+const Employee = require('../models/th_employeeModel');
 
 
 // Image Uploading................................................................

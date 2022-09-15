@@ -3,7 +3,7 @@ let multer = require('multer')
 const router=express.Router();
 let Architect= require('../models/sug_architect');
 const { check, validationResult } = require('express-validator');
-const Employee = require('../models/th_employee');
+const Employee = require('../models/th_employeeModel');
 
 
 path = require('path');
