@@ -1,7 +1,7 @@
 let express = require('express');
 let multer = require('multer')
 const router=express.Router();
-let Architect= require('../models/sug_architect');
+let Architect= require('../models/sugAdminADModel');
 const { check, validationResult } = require('express-validator');
 const Employee = require('../models/th_employeeModel');
 

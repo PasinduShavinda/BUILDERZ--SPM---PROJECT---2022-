@@ -1,9 +1,9 @@
 let express = require('express');
 let multer = require('multer')
 const router=express.Router();
-let Archi_Requirements= require('../models/sug_architect_requirements');
+let Archi_Requirements= require('../models/sugClientADModel');
 const { check, validationResult } = require('express-validator');
-let Architect= require('../models/sug_architect');
+let Architect= require('../models/sugAdminADModel');
 
 
 path = require('path');
@@ -222,7 +222,7 @@ router.post('/update_architect_requirements/:id',upload.any(),(req,res)=>{
       }else{
           req.session.message={
               type:'success',
-              message:"User updateed successfully"
+              message:"requirements updateed successfully"
           }
 
           res.redirect("/Specific_Archi_requirements")
