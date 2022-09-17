@@ -8,7 +8,7 @@ const { check, validationResult } = require('express-validator');
 router.get("/allClientGD", (req, res) => {
   AdminGD.find().exec((err, adminGds) => {
     if (err) {
-      res.json({ message: err.message });b
+      res.json({ message: err.message });
     } else {
       res.render("shvClientViewAllGardenDesigners", {
         title: "All Client Garden Designers",
@@ -147,6 +147,61 @@ router.get("/SpecificGDReq", (req, res) =>{
       });
     }
   });
+});
+
+
+// EDIT ROUTE
+router.get("/editClientGD/:id", (req, res) => {
+  let id = req.params.id;
+  ClientGD.findById(id, (err, clientGD) => {
+    if (err) {
+      res.json({ message: err.message });
+    } else {
+      if (clientGD == null) {
+        res.redirect("/");
+      } else {
+        res.render("shvClientEditRequirements", {
+          title: "Client Edit Garden Designers Requirements",
+          clientGD: clientGD,
+        });
+      }
+    }
+  });
+});
+
+// Update Garden Designer route
+router.post("/updateClientGD/:id", (req, res) => {
+  let id = req.params.id;
+
+  ClientGD.findByIdAndUpdate(id,
+    {
+      GDName : req.body.GDName,
+      ClientName : req.body.ClientName,
+      Email : req.body.Email,
+      Phone : req.body.Phone,
+      GardenArea : req.body.GardenArea,
+      Budget : req.body.Budget,
+      Address : req.body.Address,
+      Grass : req.body.Grass,
+      Pool : req.body.Pool,
+      Interlock : req.body.Interlock,
+      Play : req.body.Play,
+      Flower : req.body.Flower,
+      Pond : req.body.Pond,
+      SpecialReq : req.body.SpecialReq
+    },
+    (err, result) => {
+      if (err) {
+        res.json({ message: err.message, type: "danger" });
+      } else {
+        req.session.message = {
+          type: "success",
+          message: "Garden Designer Updated Successfully",
+        };
+        res.redirect("/SpecificGDReq");
+      }
+    }
+  );
 });
 
 module.exports = router;
