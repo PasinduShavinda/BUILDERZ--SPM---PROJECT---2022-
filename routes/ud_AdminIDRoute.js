@@ -261,29 +261,6 @@ router.get("/deleteIntiriorDesigner/:id", (req, res) => {
         console.log(err);
       }
     }
-
-    // if (result.FirstProjectPicture != "") {
-    //   try {
-    //     fs.unlinkSync(`./uploads/${result.FirstProjectPicture}`);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }
-    // if (result.SecondProjectPicture != "") {
-    //   try {
-    //     fs.unlinkSync(`./uploads/${result.SecondProjectPicture}`);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }
-    // if (result.ThirdProjectPicture != "") {
-    //   try {
-    //     fs.unlinkSync(`./uploads/${result.ThirdProjectPicture}`);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }
-
     if (err) {
       res.json({ message: err.message });
     } else {
@@ -311,12 +288,12 @@ router.get("/allIntiriorDesignerProject/:id", (req, res) => {
   });
 });
 
-// Home Page button click event
-router.get("/", (req, res) => {
-  res.render("AdminHomePage", {
-    title: "Admin Home Page",
-  });
-});
+// // Home Page button click event
+// router.get("/", (req, res) => {
+//   res.render("AdminHomePage", {
+//     title: "Admin Home Page",
+//   });
+// });
 
 //search function............................................
 router.get("/searchIntiriorDesigner", (req, res) => {
@@ -343,5 +320,29 @@ router.get("/searchIntiriorDesigner", (req, res) => {
     console.log(error);
   }
 });
+
+//............................................
+
+// // Main Home Page button click event
+// router.get("/", (req, res) => {
+//   res.render("MainHomePage", {
+//     title: "Main Home Page",
+//   });
+// });
+
+// // Admin Home Page button click event
+// router.get("/AdminHome", (req, res) => {
+//   res.render("AdminHomePage", {
+//     title: "Admin Home Page",
+//   });
+// });
+
+// // Client Home Page button click event
+// router.get("/ClientHome", (req, res) => {
+//   res.render("ClientHomePage", {
+//     title: "Client Home Page",
+//   });
+// });
+
 
 module.exports = router;
