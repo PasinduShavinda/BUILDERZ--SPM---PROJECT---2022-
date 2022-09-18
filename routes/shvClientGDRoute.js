@@ -87,38 +87,6 @@ router.post("/addClientGDReq/:id", [
 });
 
 
-router.post('/addClientGDReq', (req, res) => {
-
-  const GDReq = new ClientGD({
-    GDName : req.body.GDName,
-    ClientName : req.body.ClientName,
-    Email : req.body.Email,
-    Phone : req.body.Phone,
-    GardenArea : req.body.GardenArea,
-    Budget : req.body.Budget,
-    Address : req.body.Address,
-    Grass : req.body.Grass,
-    Pool : req.body.Pool,
-    Interlock : req.body.Interlock,
-    Play : req.body.Play,
-    Flower : req.body.Flower,
-    Pond : req.body.Pond,
-    SpecialReq : req.body.SpecialReq
-    });
-    GDReq.save((err) => {
-      if (err) {
-        res.json({ message: err.message, type: 'danger' });
-      } else {
-        req.session.message = {
-          type: "success",
-          message: "Requirements Added Successfully",
-        };
-        res.redirect("/SpecificGDReq");
-      }
-    })
-});
-
-
 // Get Specific Garden Designer Projects
 router.get("/clientGDProj/:id", (req, res) => {
   let id = req.params.id;
@@ -202,6 +170,24 @@ router.post("/updateClientGD/:id", (req, res) => {
       }
     }
   );
+});
+
+// Delete Garden Designer Requiremennts 
+
+router.get('/deleteClientGDReq/:id', (req, res) => {
+  let id = req.params.id;
+  ClientGD.findByIdAndRemove(id, (err) =>{
+    if(err){
+      res.json({message: err.message});
+    }else{
+      req.session.message = {
+        type: "info",
+        message:"Garden Designer Requirements Deleted Successfully"
+      };
+      res.redirect("/allClientGD");
+    }
+  });
+
 });
 
 module.exports = router;
