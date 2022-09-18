@@ -288,13 +288,6 @@ router.get("/allIntiriorDesignerProject/:id", (req, res) => {
   });
 });
 
-// // Home Page button click event
-// router.get("/", (req, res) => {
-//   res.render("AdminHomePage", {
-//     title: "Admin Home Page",
-//   });
-// });
-
 //search function............................................
 router.get("/searchIntiriorDesigner", (req, res) => {
   try {
@@ -323,26 +316,26 @@ router.get("/searchIntiriorDesigner", (req, res) => {
 
 //............................................
 
-// // Main Home Page button click event
-// router.get("/", (req, res) => {
-//   res.render("MainHomePage", {
-//     title: "Main Home Page",
-//   });
-// });
+// Main Home Page button click event
+router.get("/", (req, res) => {
+  res.render("MainHomePage", {
+    title: "Main Home Page",
+  });
+});
 
-// // Admin Home Page button click event
-// router.get("/AdminHome", (req, res) => {
-//   res.render("AdminHomePage", {
-//     title: "Admin Home Page",
-//   });
-// });
+// Admin Home Page button click event
+router.get("/AdminHome", (req, res) => {
+  res.render("AdminHomePage", {
+    title: "Admin Home Page",
+  });
+});
 
-// // Client Home Page button click event
-// router.get("/ClientHome", (req, res) => {
-//   res.render("ClientHomePage", {
-//     title: "Client Home Page",
-//   });
-// });
+// Client Home Page button click event
+router.get("/ClientHome", (req, res) => {
+  res.render("ClientHomePage", {
+    title: "Client Home Page",
+  });
+});
 
 
 module.exports = router;

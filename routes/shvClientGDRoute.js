@@ -8,7 +8,7 @@ const { check, validationResult } = require('express-validator');
 router.get("/allClientGD", (req, res) => {
   AdminGD.find().exec((err, adminGds) => {
     if (err) {
-      res.json({ message: err.message });b
+      res.json({ message: err.message });
     } else {
       res.render("shvClientViewAllGardenDesigners", {
         title: "All Client Garden Designers",

@@ -44,10 +44,6 @@ const ClientInteriorDesignerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Flower: {
-    type: String,
-    required: true,
-  },
   Budget: {
     type: String,
     required: true,
