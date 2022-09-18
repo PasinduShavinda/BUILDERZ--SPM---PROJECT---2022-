@@ -95,4 +95,18 @@ router.post('/add_Customer', upload.any(),[
     }
   });
 
-  module.exports = router;
+//Get all customers route
+router.get("/get_Customer", (req, res) => {
+  Customer.find({}, (err, customers) => {
+    if (err) {
+      res.json({message:err.message})
+    } else {
+      res.render("th_viewCustomers", { 
+        title:'All Customers',
+        customers: customers });
+    }
+  })
+
+});
+
+module.exports = router;
