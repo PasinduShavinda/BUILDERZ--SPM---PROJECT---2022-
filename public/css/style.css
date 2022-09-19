@@ -2372,3 +2372,21 @@ a:focus {
   .disableFeild{
     pointer-events:none;
   }
+
+  .cbb {
+    margin-top: "80px";
+    width: '100%';
+    background-image:url("https://bhiroof.com/wp-content/uploads/2020/10/empty-living-room-with-blue-sofa-plants-table-empty-white-wall-background-3d-rendering_41470-1778.jpg"); ;
+    background-position: center;
+    background-size: cover;
+}
+
+.frameClientSpReq {
+    width: 1000px;
+    height: 700px;
+    border: 3px solid #39B797;
+    background: #F9F8F8;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px 10px;
+  }

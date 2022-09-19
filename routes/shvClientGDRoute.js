@@ -187,7 +187,19 @@ router.get('/deleteClientGDReq/:id', (req, res) => {
       res.redirect("/allClientGD");
     }
   });
-
 });
 
+// Get All Garden Designer Requirements Route
+router.get("/allClientGDReq", (req, res) => {
+  ClientGD.find().exec((err, clientGDs) => {
+    if (err) {
+      res.json({ message: err.message });
+    } else {
+      res.render("shvAdminViewAllGDRequirements", {
+        title: "All Client Requirements For Garden Designers",
+        clientGDs: clientGDs,
+      });
+    }
+  });
+});
 module.exports = router;

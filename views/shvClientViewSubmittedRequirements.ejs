@@ -1,5 +1,5 @@
 <%- include('layout/header')%>
-    <div class="container frameClientGDForm">
+    <div class="container frameClientSpReq">
         <div>
             <div>
                 <% if (message) { %>
@@ -10,12 +10,13 @@
                         </strong>
                     </div>
                     <% } %>
-                        <h1 class="d-flex justify-content-center">Garden Designer Requirements
-                        </h1>
+                    <div class="canvas_div_pdf">
+                        <h1 class="d-flex justify-content-center">Garden Designer Requirements</h1>
                         <br>
                         <%if(clientGDReqs!=''){%>
                             <% clientGDReqs.forEach((row,index)=>{%>
-                                <div className='container py-5 h-100'>
+                        
+                                <div class="cbb">
                                     <dl class="row">
                                         <dt class="col-sm-3">Garden Designer</dt>
                                         <dd class="col-sm-8">
@@ -87,7 +88,13 @@
                                         </dd>
                                     </dl>
                                 </div>
+                                </div>
                                 <center>
+                                    <button class="btn btn-outline-info btn-lg" onclick="getPDF();">
+                                        <i class="fa-solid fa-download">
+                                        </i> Download
+                                        </button>
+
                                     <a href="/editClientGD/<%=row._id%>" class="text-success"> 
                                     <button class="btn btn-outline-warning btn-lg">
                                     <i class="fa-solid fa-pen-to-square"></i> Edit
@@ -100,11 +107,7 @@
                                     </i>Delete
                                     </button>
                                         
-                                    <a href="#" class="text-success">
-                                    <button class="btn btn-outline-info btn-lg">
-                                    <i class="fa-solid fa-download">
-                                    </i> Download
-                                    </button>
+                 
                                 </center>
                                 <%})%>
                                 <%}else{%>
