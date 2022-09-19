@@ -22,7 +22,7 @@ router.get("/allClientIntiriorDesigner", (req, res) => {
 router.post(
   "/addClientInteriorDesignerReq/:id",
   [
-    check("InteriorName")
+    check("ClientName")
       .matches(/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/)
       .withMessage("Invalid Name.. Please enter correct name !!"),
 
@@ -40,7 +40,7 @@ router.post(
 
     check("Budget")
       .matches(/^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/)
-      .withMessage("Budget is not valid.. Please enter correct budget !! !"),
+      .withMessage("Budget is not valid.. Please enter correct Budget !! !"),
   ],
   (req, res) => {
     const errors = validationResult(req);
@@ -71,7 +71,7 @@ router.post(
         Funiture: req.body.Funiture,
         Pantry: req.body.Pantry,
         Deco: req.body.Deco,
-        Budgetd: req.body.Budget,
+        Budget: req.body.Budget,
         SpecialReq: req.body.SpecialReq,
       });
 
@@ -103,40 +103,39 @@ router.post("/addClientInteriorDesignerReq", (req, res) => {
     Funiture: req.body.Funiture,
     Pantry: req.body.Pantry,
     Deco: req.body.Deco,
-    Budgetd: req.body.Budget,
+    Budget: req.body.Budget,
     SpecialReq: req.body.SpecialReq,
   });
- IntiriorDesignerReq.save((err) => {
-   if (err) {
-     res.json({ message: err.message, type: "danger" });
-   } else {
-     req.session.message = {
-       type: "success",
-       message: "Requirements Added Successfully",
-     };
-     res.redirect("/SpecificIntiriorDesignerReq");
-   }
- });
+  IntiriorDesignerReq.save((err) => {
+    if (err) {
+      res.json({ message: err.message, type: "danger" });
+    } else {
+      req.session.message = {
+        type: "success",
+        message: "Requirements Added Successfully",
+      };
+      res.redirect("/SpecificIntiriorDesignerReq");
+    }
+  });
 });
-
 
 // Get Specific Garden Designer Projects
 router.get("/clientIntiriorDesignerProject/:id", (req, res) => {
   let id = req.params.id;
- IntiriorDesigner.findById(id, (err, intiriorDesigner) => {
-   if (err) {
-     res.json({ message: err.message });
-   } else {
-     res.render("ud_Add_ClientRequirements.ejs", {
-       title: "Get Specific Projects client page",
-       intiriorDesigner: intiriorDesigner,
-     });
-   }
- });
+  IntiriorDesigner.findById(id, (err, intiriorDesigner) => {
+    if (err) {
+      res.json({ message: err.message });
+    } else {
+      res.render("ud_Add_ClientRequirements.ejs", {
+        title: "Get Specific Projects client page",
+        intiriorDesigner: intiriorDesigner,
+      });
+    }
+  });
 });
 
 // Get Specific Requirements given to the IntiriorDesigner
-router.get("/SpecificGDReq", (req, res) =>{
+router.get("/SpecificGDReq", (req, res) => {
   ClientIntiriorDesigner.find()
     .sort({ $natural: -1 })
     .limit(1)
@@ -144,7 +143,7 @@ router.get("/SpecificGDReq", (req, res) =>{
       if (err) {
         res.json({ message: err.message });
       } else {
-        res.render("ud_View_ClientSubmitted_Requirements", {
+        res.render("ud_View_ClientSubmitted_Requirements.ejs", {
           title: "Get Specific requirements to the IntiriorDesigner",
           clientIntiriorDesignerReqs: clientIntiriorDesignerReqs,
         });

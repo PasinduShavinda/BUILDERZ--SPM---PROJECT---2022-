@@ -45,7 +45,7 @@ const ClientInteriorDesignerSchema = new mongoose.Schema({
     required: true,
   },
   Budget: {
-    type: String,
+    type: Number,
     required: true,
   },
   SpecialReq: {

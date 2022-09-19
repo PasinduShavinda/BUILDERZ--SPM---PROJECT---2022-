@@ -51,7 +51,7 @@ app.use("", require("./routes/th_adminRoute"));
 app.use("", require("./routes/shvClientGDRoute"));
 app.use("", require("./routes/sugClientADRoute"));
 app.use("", require("./routes/th_customerRoute"));
-
+app.use("", require("./routes/ud_ClientIDRoute"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
