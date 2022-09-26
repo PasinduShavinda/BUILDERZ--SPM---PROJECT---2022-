@@ -2399,3 +2399,13 @@ a:focus {
   background-position: center;
   background-size: cover;
 }
+
+.tblhead {
+
+  font-size: 10px;
+}
+.tblbody {
+
+  font-size: 9px;
+  font-weight: bold;
+}
