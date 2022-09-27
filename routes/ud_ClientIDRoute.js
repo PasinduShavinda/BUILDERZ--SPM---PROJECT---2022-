@@ -90,36 +90,8 @@ router.post(
   }
 );
 
-router.post("/addClientInteriorDesignerReq", (req, res) => {
-  const IntiriorDesignerReq = new ClientIntiriorDesigner({
-    InteriorName: req.body.InteriorName,
-    ClientName: req.body.ClientName,
-    Email: req.body.Email,
-    Phone: req.body.Phone,
-    Location: req.body.Location,
-    ThemeColour: req.body.ThemeColour,
-    RoofColour: req.body.RoofColour,
-    FloorColour: req.body.FloorColour,
-    Funiture: req.body.Funiture,
-    Pantry: req.body.Pantry,
-    Deco: req.body.Deco,
-    Budget: req.body.Budget,
-    SpecialReq: req.body.SpecialReq,
-  });
-  IntiriorDesignerReq.save((err) => {
-    if (err) {
-      res.json({ message: err.message, type: "danger" });
-    } else {
-      req.session.message = {
-        type: "success",
-        message: "Requirements Added Successfully",
-      };
-      res.redirect("/SpecificIntiriorDesignerReq");
-    }
-  });
-});
 
-// Get Specific Garden Designer Projects
+// Get Specific Intirior Designer Projects
 router.get("/clientIntiriorDesignerProject/:id", (req, res) => {
   let id = req.params.id;
   IntiriorDesigner.findById(id, (err, intiriorDesigner) => {
@@ -135,7 +107,7 @@ router.get("/clientIntiriorDesignerProject/:id", (req, res) => {
 });
 
 // Get Specific Requirements given to the IntiriorDesigner
-router.get("/SpecificGDReq", (req, res) => {
+router.get("/SpecificIntiriorDesignerReq", (req, res) => {
   ClientIntiriorDesigner.find()
     .sort({ $natural: -1 })
     .limit(1)
@@ -149,6 +121,92 @@ router.get("/SpecificGDReq", (req, res) => {
         });
       }
     });
+});
+
+
+//Edit Intirior Designer
+router.get("/editClientIntiriorDesigner/:id", (req, res) => {
+  let id = req.params.id;
+ ClientIntiriorDesigner.findById(id, (err, clientIntiriorDesigner) => {
+   if (err) {
+     res.json({ message: err.message });
+   } else {
+     if (clientIntiriorDesigner == null) {
+       res.redirect("/");
+     } else {
+       res.render("ud_Edit_ClientRequirements.ejs", {
+         title: "Client Edit Intirior Designer Requirements",
+         clientIntiriorDesigner: clientIntiriorDesigner,
+       });
+     }
+   }
+ });
+});
+
+//Update Intirior Designer
+router.post("/updateClientInteriorDesignerReq/:id", (req, res) => {
+   let id = req.params.id;
+   ClientIntiriorDesigner.findByIdAndUpdate(
+     id,
+     {
+       InteriorName: req.body.InteriorName,
+       ClientName: req.body.ClientName,
+       Email: req.body.Email,
+       Phone: req.body.Phone,
+       Location: req.body.Location,
+       ThemeColour: req.body.ThemeColour,
+       RoofColour: req.body.RoofColour,
+       FloorColour: req.body.FloorColour,
+       Funiture: req.body.Funiture,
+       Pantry: req.body.Pantry,
+       Deco: req.body.Deco,
+       Budget: req.body.Budget,
+       SpecialReq: req.body.SpecialReq,
+     },
+     (err, result) => {
+       if (err) {
+         res.json({ message: err.message, type: "danger" });
+       } else {
+         req.session.message = {
+           type: "success",
+           message: "Requirements Added Successfully",
+         };
+         res.redirect("/SpecificIntiriorDesignerReq");
+       }
+     }
+   );
+});
+
+
+// Delete Intirior Designer Requiremennts 
+router.get("/deleteClientIntiriorDesignerReq/:id", (req, res) => {
+  let id = req.params.id;
+  ClientIntiriorDesigner.findByIdAndRemove(id, (err) => {
+    if (err) {
+      res.json({ message: err.message });
+    } else {
+      req.session.message = {
+        type: "info",
+        message: " Intirior Designer Requirements Deleted Successfully",
+      };
+      res.redirect("/allClientIntiriorDesigner");
+    }
+  });
+});
+
+
+// Get All Intirior Designer Requirements Route
+router.get("/allClientIntiriorDesignerReq", (req, res) => {
+   ClientIntiriorDesigner.find().exec((err, clientIntiriorDesigner) => {
+     if (err) {
+       res.json({ message: err.message });
+     } else {
+       res.render("ud_View_AdminAllIntiriorDesignerRequirements.ejs", {
+         title: "All Client Requirements For Intirior Designer",
+         clientIntiriorDesigner: clientIntiriorDesigner,
+       });
+     }
+   });
 });
 
 module.exports = router;

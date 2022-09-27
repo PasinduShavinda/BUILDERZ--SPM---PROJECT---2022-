@@ -56,11 +56,6 @@ router.get("/allIntiriorDesigner", (req, res) => {
   });
 });
 
-// router.get("/addIntiriorDesigner", (req, res) => {
-//   res.render("ud_Add_Intirior_Designer.ejs", {
-//     title: "Add IntiriorDesigner",
-//   });
-// });
 
 // Add Intirior Designer Route..................................................
 router.post("/addIntiriorDesigner",

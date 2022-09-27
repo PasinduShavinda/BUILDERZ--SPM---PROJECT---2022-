@@ -10,7 +10,7 @@
                 <% if (clientGDs != '') { %>
                     <table class="table table-striped text-center">
                         <thead>
-                            <tr class="table-dark">
+                            <tr class="table-dark tblhead">
                                 <th>Garden Designer</th>
                                 <th>Client Name</th>
                                 <th>Email</th>
@@ -29,7 +29,7 @@
                         </thead>
                         <tbody>
                             <% clientGDs.forEach((row,index)=> { %>
-                            <tr class="align-middle">
+                            <tr class="tblbody">
                                 <td><%= row.GDName %></td>
                                 <td><%= row.ClientName %></td>
                                 <td><%= row.Email %></td>

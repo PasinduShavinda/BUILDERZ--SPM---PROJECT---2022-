@@ -16,6 +16,7 @@
                                       </div>
                                 <% }) %>
                             <% } %>
+                            
                             <form action="/updateClientGD/<%= clientGD._id %>" method="post" id="ädd-form">
                                
                                 <div class="form-group row mt-3">
@@ -68,105 +69,48 @@
                                     </div>
                                 </div>
             
+                               <!-- ................................................... -->
                                 <div class="form-group row mt-3">
                                     <label for="Grass" class="col-sm-2 col-form-label">Grass</label>
                                     <div class="col-sm-8">
-                                        <select 
-                                        class="form-control"  
-                                        name="Grass"
-                                        value="<%= clientGD.Grass %>"
-                                        required
-                                        >
-                                        <option value="" disabled selected hidden>Please Choose...</option>
-                                        <option value = "Required">Required</option>
-                                        <option value = "Not Required">Not Required</option>
-                                        </select>
-                                        <!-- <div id="grass_type" style="display: none;">
-                                            <label>Grass Type:</label>
-                                            <input type="text" name="grassType" id="grassType">
-                                        </div> -->
+                                        <input type="text" class="form-control" name="Grass" placeholder="Grass" value="<%= clientGD.Grass %>" required>
                                     </div>
                                 </div>
-            
+                       <!-- ................................................... -->
                                 <div class="form-group row mt-3">
                                     <label for="Pool" class="col-sm-2 col-form-label">Swimming Pool</label>
                                     <div class="col-sm-8">
-                                        <select 
-                                        class="form-control"  
-                                        name="Pool"
-                                        value="<%= clientGD.Pool %>"
-                                        required
-                                        >
-                                        <option value="" disabled selected hidden>Please Choose...</option>
-                                        <option value = "Required">Required</option>
-                                        <option value = "Not Required">Not Required</option>
-                                        </select>
+                                        <input type="text" class="form-control" name="Pool" placeholder="Pool" value="<%= clientGD.Pool %>" required>
                                     </div>
                                 </div>
-            
+                    <!-- ................................................... -->
                                 <div class="form-group row mt-3">
                                     <label for="Interlock" class="col-sm-2 col-form-label">Interlock Garden</label>
                                     <div class="col-sm-8">
-                                        <select 
-                                        class="form-control"  
-                                        name="Interlock"
-                                        value="<%= clientGD.Interlock %>"
-                                        required
-                                        >
-                                        <option value="" disabled selected hidden>Please Choose...</option>
-                                        <option value = "Required">Required</option>
-                                        <option value = "Not Required">Not Required</option>
-                                        </select>
+                                        <input type="text" class="form-control" name="Interlock" placeholder="Interlock" value="<%= clientGD.Interlock %>" required>
                                     </div>
                                 </div>
-
+                                <!-- ................................................... -->
                                 <div class="form-group row mt-3">
-                                    <label for="Play" class="col-sm-2 col-form-label">Kids Play area </label>
+                                    <label for="Play" class="col-sm-2 col-form-label">Play</label>
                                     <div class="col-sm-8">
-                                        <select 
-                                        class="form-control"  
-                                        name="Play"
-                                        value="<%= clientGD.Play %>"
-                                        required
-                                        >
-                                        <option value="" disabled selected hidden>Please Choose...</option>
-                                        <option value = "Required">Required</option>
-                                        <option value = "Not Required">Not Required</option>
-                                        </select>
+                                        <input type="text" class="form-control" name="Play" placeholder="Play" value="<%= clientGD.Play %>" required>
                                     </div>
                                 </div>
-
-                                <div class="form-group row mt-3">
-                                    <label for="Flower" class="col-sm-2 col-form-label">Flower Plants</label>
-                                    <div class="col-sm-8">
-                                        <select 
-                                        class="form-control"  
-                                        name="Flower"
-                                        value="<%= clientGD.Flower %>"
-                                        required
-                                        >
-                                        <option value="" disabled selected hidden>Please Choose...</option>
-                                        <option value = "Required">Required</option>
-                                        <option value = "Not Required">Not Required</option>
-                                        </select>
+                                    <!-- ................................................... -->
+                                    <div class="form-group row mt-3">
+                                        <label for="Flower" class="col-sm-2 col-form-label">Flower</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="Flower" placeholder="Flower" value="<%= clientGD.Flower %>" required>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="form-group row mt-3">
-                                    <label for="Pond" class="col-sm-2 col-form-label">Fish Pond</label>
-                                    <div class="col-sm-8">
-                                        <select            
-                                        class="form-control"  
-                                        name="Pond"
-                                        value="<%= clientGD.Pond %>"
-                                        required
-                                        >
-                                        <option value= "" disabled selected hidden>Please Choose...</option>
-                                        <option value = "Required">Required</option>
-                                        <option value = "Not Required">Not Required</option>
-                                        </select>
+                                    <!-- ................................................... -->
+                                    <div class="form-group row mt-3">
+                                        <label for="Pond" class="col-sm-2 col-form-label">Pond</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="Pond" placeholder="Pond" value="<%= clientGD.Pond %>" required>
+                                        </div>
                                     </div>
-                                </div>
             
                                 <div class="form-group row mt-3">
                                     <label for="SpecialReq" class="col-sm-2 col-form-label">Special Requrements</label>
