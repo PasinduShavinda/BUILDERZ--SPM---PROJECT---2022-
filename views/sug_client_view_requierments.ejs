@@ -11,10 +11,11 @@
         <% } %>  
   
                   <!-- Team Start -->
-                  
+                  <div class="canvas_div_pdf">
                   <h1 class="d-flex justify-content-center">Architecturer Requirements
                 </h1>
-
+                        <br/>
+                        <br/>
                           <%if(data!=''){%>
                             
                            
@@ -77,14 +78,19 @@
                                         
                                         </dl>
                                     
-
+                                      </div>
 
                                     </div>
                                      <center>
+                                      <button class="btn btn-outline-info btn-lg" onclick="getPDF();">
+                                        <i class="fa-solid fa-download">
+                                        </i> Download
+                                        </button>
                                     <a href="/edit_architect_requirements/<%=row._id%>" class="text-success"> <button class="btn btn-outline-warning btn-lg"><i class="fa-solid fa-pen-to-square"></i> Edit</button></a>
-                                    <a href="/delete_architect_requirements/<%=row._id%>" class="text-success"><button class="btn btn-outline-danger btn-lg"><i class="fa-solid fa-trash"></i>Delete</button>
-                                    <a href="#" class="text-success"><button class="btn btn-outline-info btn-lg"><i class="fa-solid  fa-download"></i>Download</button>
+                                    <a href="/delete_architect_requirements/<%=row._id%>" class="text-success"><button class="btn btn-outline-danger btn-lg"><i class="fa-solid fa-trash"></i>Delete</button></a>
+                                    
                                     </center>
+                                   
                                   <%})%>
                             
                             
@@ -96,15 +102,6 @@
                                    <%}%>
 
                                     </div>
-                            
-                       
-                <!-- Team End -->
-                
-
-                
-      
-              
-
 
         </div>
     </div>

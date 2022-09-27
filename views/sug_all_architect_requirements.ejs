@@ -1,6 +1,8 @@
 <%- include('layout/header') %>
 
-<div>
+<div><div class="canvas_div_pdf">
+    <br/>
+    <center><h2>Client Requirements for the Architect Designers</h2></center>
     <div class="row my-4">
         <div class="col-lg-26">
             <% if (message) { %> 
@@ -62,4 +64,10 @@
     </div>
 </div>
 
+<br/><br/>
+<button class="btn btn-outline-info btn-lg" onclick="getPDF();">
+    <i class="fa-solid fa-download">
+    </i> Download
+    </button>
+</div>
 <%- include('layout/footer') %>
