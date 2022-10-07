@@ -20,9 +20,11 @@ GROUP MEMBERS
 
 *Technical Details
 
-Frontend - EJS, HTML, CSS
-Backend  - Node JS
-Database - MongoDB
+1. Frontend - EJS, HTML, CSS
+
+2. Backend  - Node JS
+
+3. Database - MongoDB
 
 -------------------------
 *How to run the project 
