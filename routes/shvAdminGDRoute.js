@@ -21,7 +21,7 @@ const upload = multer({
     fileSize: 10000000 // max file size 10MB
   },
   fileFilter: function (req, file, cb) {
-   ;
+
 function checkFileType(file, cb) {
   // Allowed ext
   const filetypes = /jpeg|jpg|png/;

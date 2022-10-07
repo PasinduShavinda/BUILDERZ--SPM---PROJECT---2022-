@@ -1024,7 +1024,7 @@
 	 */
 	Owl.prototype.maximum = function(relative) {
 		var settings = this.settings,
-			maximum = this._coordinates.length,
+
 			iterator,
 			reciprocalItemsWidth,
 			elementWidth;
@@ -1703,7 +1703,7 @@
  * @author David Deutsch
  * @license The MIT License (MIT)
  */
-;(function($, window, document, undefined) {
+(function($, window, document, undefined) {
 
 	/**
 	 * Creates the auto refresh plugin.
@@ -1815,7 +1815,7 @@
  * @author David Deutsch
  * @license The MIT License (MIT)
  */
-;(function($, window, document, undefined) {
+(function($, window, document, undefined) {
 
 	/**
 	 * Creates the lazy plugin.
@@ -2049,8 +2049,7 @@
  * @author David Deutsch
  * @license The MIT License (MIT)
  */
-;(function($, window, document, undefined) {
-
+(function($, window, document, undefined) {
 	/**
 	 * Creates the video plugin.
 	 * @class The Video Plugin
@@ -3256,19 +3255,19 @@
 
 	if (tests.csstransitions()) {
 		/* jshint -W053 */
-		$.support.transition = new String(prefixed('transition'))
+		$.support.transition = String(prefixed('transition'))
 		$.support.transition.end = events.transition.end[ $.support.transition ];
 	}
 
 	if (tests.cssanimations()) {
 		/* jshint -W053 */
-		$.support.animation = new String(prefixed('animation'))
+		$.support.animation =  String(prefixed('animation'))
 		$.support.animation.end = events.animation.end[ $.support.animation ];
 	}
 
 	if (tests.csstransforms()) {
 		/* jshint -W053 */
-		$.support.transform = new String(prefixed('transform'));
+		$.support.transform = String(prefixed('transform'));
 		$.support.transform3d = tests.csstransforms3d();
 	}
 

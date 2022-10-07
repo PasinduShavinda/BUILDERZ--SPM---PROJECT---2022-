@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator');
 const Employee = require('../models/th_employeeModel');
 
 
-path = require('path');
+let path = require('path');
 let fs = require('fs');
 let dir = './uploads';
 
@@ -125,8 +125,9 @@ router.post('/add_Architect', upload.any(),[
       });
 
       architect.save((err) => {
-        if (err)
+        if (err){
         res.json({message:err.message,type:'danger'});
+        }
         else{
           req.session.message={
             type:'success',

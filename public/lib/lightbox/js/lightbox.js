@@ -224,7 +224,7 @@
 
     if (dataLightboxValue) {
       $links = $($link.prop('tagName') + '[data-lightbox="' + dataLightboxValue + '"]');
-      for (var i = 0; i < $links.length; i = ++i) {
+      for (var i = 0; i < $links.length; ++i) {
         addToAlbum($($links[i]));
         if ($links[i] === $link[0]) {
           imageNumber = i;
@@ -237,7 +237,7 @@
       } else {
         // If image is part of a set
         $links = $($link.prop('tagName') + '[rel="' + $link.attr('rel') + '"]');
-        for (var j = 0; j < $links.length; j = ++j) {
+        for (var j = 0; j < $links.length; ++j) {
           addToAlbum($($links[j]));
           if ($links[j] === $link[0]) {
             imageNumber = j;
@@ -291,8 +291,6 @@
         'alt': self.album[imageNumber].alt,
         'src': self.album[imageNumber].link
       });
-
-      $preloader = $(preloader);
 
       $image.width(preloader.width);
       $image.height(preloader.height);

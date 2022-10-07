@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator');
 let Architect= require('../models/sugAdminADModel');
 
 
-path = require('path');
+let path = require('path');
 let fs = require('fs');
 let dir = './uploads';
 
@@ -117,8 +117,9 @@ router.post('/client_project_architects/:id', upload.any(),[
       });
 
       requirement.save((err) => {
-        if (err)
+        if (err){
         res.json({message:err.message,type:'danger'});
+        }
         else{
           req.session.message={
             type:'success',

@@ -2,5 +2,5 @@ projectKey=Builderz_SPM_Project
 serverUrl=http://localhost:9000
 serverVersion=7.5.0.20543
 dashboardUrl=http://localhost:9000/dashboard?id=Builderz_SPM_Project
-ceTaskId=AYNb0O7dtgcAIb0dV9rK
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYNb0O7dtgcAIb0dV9rK
+ceTaskId=AYOzUFt6n3u2TEn3C1wC
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYOzUFt6n3u2TEn3C1wC
