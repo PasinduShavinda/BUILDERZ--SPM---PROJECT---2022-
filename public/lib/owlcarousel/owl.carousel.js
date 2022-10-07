@@ -1030,7 +1030,7 @@
 			elementWidth;
 
 		if (settings.loop) {
-			maximum = this._clones.length / 2 + this._items.length - 1;
+			 var maximum = this._clones.length / 2 + this._items.length - 1;
 		} else if (settings.autoWidth || settings.merge) {
 			iterator = this._items.length;
 			reciprocalItemsWidth = this._items[--iterator].width();

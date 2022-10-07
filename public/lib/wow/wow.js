@@ -89,17 +89,6 @@
     return customEvent;
   }
 
-  function emitEvent(elem, event) {
-    if (elem.dispatchEvent != null) {
-      // W3C DOM
-      elem.dispatchEvent(event);
-    } else if (event in (elem != null)) {
-      elem[event]();
-    } else if ('on' + event in (elem != null)) {
-      elem['on' + event]();
-    }
-  }
-
   function addEvent(elem, event, fn) {
     if (elem.addEventListener != null) {
       // W3C DOM

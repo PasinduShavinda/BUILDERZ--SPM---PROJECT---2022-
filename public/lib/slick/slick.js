@@ -339,7 +339,7 @@
         var _ = this,
             asNavFor = _.options.asNavFor;
 
-        if ( asNavFor && asNavFor !== null ) {
+        if ( asNavFor && asNavFor != null ) {
             asNavFor = $(asNavFor).not(_.$slider);
         }
 
