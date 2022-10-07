@@ -16,3 +16,21 @@ GROUP MEMBERS
 
 4. Wijesinghe R.M.U.S - IT20015244 - Interior Designer Management - (Admin Functions + Client Functions)
 
+-------------------------
+
+*Technical Details
+
+Frontend - EJS, HTML, CSS
+Backend  - Node JS
+Database - MongoDB
+
+-------------------------
+*How to run the project 
+
+1. Go to the root folder and run the "npm install" command to install the node modules.
+
+2. Run the project by entering the "npm start" command.
+
+3. Open the web browser and go to the url -> http://localhost:5000
+
+--------------------------
