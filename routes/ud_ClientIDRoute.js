@@ -209,4 +209,31 @@ router.get("/allClientIntiriorDesignerReq", (req, res) => {
    });
 });
 
+
+
+//search function............................................
+router.get("/searchClientIntiriorDesigner", (req, res) => {
+  try {
+    IntiriorDesigner.find(
+      {
+        $or: [
+          { Name: { $regex: req.query.IntiriorDesignersearch } },
+          { Phone: { $regex: req.query.IntiriorDesignersearch } },
+        ],
+      },
+      (err, intiriorDesigner) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render("ud_View_ClientAll_IntiriorDesigner.ejs", {
+            title: "All Garden Designers",
+            intiriorDesigner: intiriorDesigner,
+          });
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
 module.exports = router;
