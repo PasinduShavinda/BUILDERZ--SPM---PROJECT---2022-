@@ -52,7 +52,7 @@
                 <div class="container">
                     <div>
                         <div>
-                            <h3 class="container mt-5 d-flex justify-content-center">intirior Designer Requirements</h3>
+                            <h3 class="container mt-5 d-flex justify-content-center">Interior Designer Requirements</h3>
             
                             <% if(typeof alert != 'undefined') { %>
                                 <% alert.forEach(function(error) { %>
@@ -67,7 +67,7 @@
                             <form action="/addClientInteriorDesignerReq/<%= intiriorDesigner._id %>" method="post" id="ädd-form">
                                
                                 <div class="form-group row mt-3">
-                                    <label for="InteriorName" class="col-sm-2 col-form-label" >Intirior Designer</label>
+                                    <label for="InteriorName" class="col-sm-2 col-form-label" >Interior Designer</label>
                                     <div class="col-sm-8">
                                        <input type="text" class="form-control disableFeild" name="InteriorName" value="<%= intiriorDesigner.Name%>"></center>
                                     </div>
@@ -124,7 +124,7 @@
                                 </div>
             
                                 <div class="form-group row mt-3">
-                                    <label for="Funiture" class="col-sm-2 col-form-label">Require Funiture</label>
+                                    <label for="Funiture" class="col-sm-2 col-form-label">Required Funiture</label>
                                     <div class="col-sm-8">
                                         <select 
                                         class="form-control"  
@@ -139,7 +139,7 @@
                                 </div>
             
                                 <div class="form-group row mt-3">
-                                    <label for="Pantry" class="col-sm-2 col-form-label">Require Pantry Set</label>
+                                    <label for="Pantry" class="col-sm-2 col-form-label">Required Pantry Set</label>
                                     <div class="col-sm-8">
                                         <select 
                                         class="form-control"  
@@ -154,7 +154,7 @@
                                 </div>
             
                                 <div class="form-group row mt-3">
-                                    <label for="Deco" class="col-sm-2 col-form-label">Require Deco</label>
+                                    <label for="Deco" class="col-sm-2 col-form-label">Required Deco</label>
                                     <div class="col-sm-8">
                                         <select 
                                         class="form-control"  
@@ -177,7 +177,7 @@
 
             
                                 <div class="form-group row mt-3">
-                                    <label for="SpecialReq" class="col-sm-2 col-form-label">Special Requrements</label>
+                                    <label for="SpecialReq" class="col-sm-2 col-form-label">Special Requirements</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" class="form-control" name="SpecialReq"
                                             placeholder="Special Requirements" rows="4"></textarea>

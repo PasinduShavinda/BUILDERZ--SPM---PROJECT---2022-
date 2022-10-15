@@ -169,7 +169,7 @@ router.post("/updateClientInteriorDesignerReq/:id", (req, res) => {
        } else {
          req.session.message = {
            type: "success",
-           message: "Requirements Added Successfully",
+           message: "Requirements Updated Successfully",
          };
          res.redirect("/SpecificIntiriorDesignerReq");
        }
