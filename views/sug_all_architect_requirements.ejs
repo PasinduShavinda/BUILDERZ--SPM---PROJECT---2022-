@@ -2,7 +2,7 @@
 
 <div><div class="canvas_div_pdf">
     <br/>
-    <center><h2>Client Requirements for the Architect Designers</h2></center>
+    <center><h2>Client Requirements for the Architectures</h2></center>
     <div class="row my-4">
         <div class="col-lg-26">
             <% if (message) { %> 
@@ -18,23 +18,23 @@
                 <% if (data != '') { %>
                     <table  class="table table-striped text-center">
                         <thead>
-                            <tr class="table-dark">
+                            <tr class="table-dark tblhead">
                                 <th>Architecture</th>
-                                <th>Client_Name</th>
+                                <th>Client Name</th>
                                 <th>Email</th>
-                                <th>Builging_Type</th>
-                                <th>No_of_floors</th>
-                                <th>Estimated_Budget</th>
+                                <th>Building Type</th>
+                                <th>No of floors</th>
+                                <th>Estimated Budget</th>
                                 <th>Location</th>
-                                <th>Plan_of_the_Land</th>
-                                <th>Bed_Rooms</th>
+                                <th>Plan of the Land</th>
+                                <th>Bed Rooms</th>
                                 <th>Bathrooms</th>
-                                <th>Parking_Area</th>
-                                <th>Other_Requirements</th>
+                                <th>Parking Area</th>
+                                <th>Other Requirements</th>
                                 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="tblbody">
                             <% data.forEach((row,index)=> { %>
                             <tr class="align-middle">
                                 <td><%= row.Architecture %></td>
