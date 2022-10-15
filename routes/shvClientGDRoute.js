@@ -202,4 +202,33 @@ router.get("/allClientGDReq", (req, res) => {
     }
   });
 });
+
+//search
+router.get("/searchClientGDs", (req, res) => {
+  try {
+    AdminGD.find(
+      {
+        $or: [
+          { Name: { $regex: req.query.GDsearch } },
+          { Phone: { $regex: req.query.GDsearch } },
+        ],
+      },
+      (err, adminGds) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render("shvClientViewAllGardenDesigners", {
+            title: "All Garden Designers",
+            adminGds: adminGds,
+          });
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+
 module.exports = router;
