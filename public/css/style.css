@@ -2405,3 +2405,14 @@ a:focus {
   font-size: 9px;
   font-weight: bold;
 }
+
+.client_view_req_archi{
+  padding-top: 5%;
+  padding-left: 8%;
+  margin: 5%;
+  padding-bottom: 7%;
+  border: 3px solid #39b797;
+  background-image: url("https://www.wallpapertip.com/wmimgs/24-240142_presentation-simple-powerpoint-background-design.jpg");
+  background-position: center;
+  background-size: cover;
+}
