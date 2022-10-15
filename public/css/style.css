@@ -2407,7 +2407,7 @@ a:focus {
 }
 
 .client_view_req_archi{
-  padding-top: 5%;
+  padding: 5%;
   padding-left: 8%;
   margin: 5%;
   padding-bottom: 7%;
@@ -2415,4 +2415,25 @@ a:focus {
   background-image: url("https://www.wallpapertip.com/wmimgs/24-240142_presentation-simple-powerpoint-background-design.jpg");
   background-position: center;
   background-size: cover;
+}
+
+.admin_view_req_archi{
+  padding: 3%;
+  
+  margin: 5%;
+  padding-bottom: 7%;
+  border: 3px solid #39b797;
+  background-image: url("https://www.wallpapertip.com/wmimgs/24-240142_presentation-simple-powerpoint-background-design.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.tblheadarchi {
+
+  font-size: 11px;
+}
+.tblbodyarchi {
+
+  font-size: 11px;
+  font-weight: bold;
 }

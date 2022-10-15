@@ -1,6 +1,6 @@
 <%- include('layout/header') %>
 
-<div><div class="canvas_div_pdf">
+<div class="admin_view_req_archi"><div class="canvas_div_pdf">
     <br/>
     <center><h2>Client Requirements for the Architectures</h2></center>
     <div class="row my-4">
@@ -18,7 +18,7 @@
                 <% if (data != '') { %>
                     <table  class="table table-striped text-center">
                         <thead>
-                            <tr class="table-dark tblhead">
+                            <tr class="table-dark tblheadarchi">
                                 <th>Architecture</th>
                                 <th>Client Name</th>
                                 <th>Email</th>
@@ -34,7 +34,7 @@
                                 
                             </tr>
                         </thead>
-                        <tbody class="tblbody">
+                        <tbody class="tblbodyarchi">
                             <% data.forEach((row,index)=> { %>
                             <tr class="align-middle">
                                 <td><%= row.Architecture %></td>
@@ -44,7 +44,7 @@
                                 <td><%= row. No_of_floors %></td>
                                 <td><%= row.Estimated_Budget %></td>
                                 <td><%= row.Location %></td>
-                                <td><img src="<%= row.Plan_of_the_Land %>" width="50" class="img-proj1" mt-1 /></td>
+                                <td><img src="<%= row.Plan_of_the_Land %>" width="100" class="img-proj1" mt-1 style=" border: 1px solid rgb(0, 0, 0);" /></td>
                                 <td><%= row.Bed_Rooms %></td>
                                 <td><%= row.Bathrooms %></td>
                                 <td><%= row.Parking_Area %></td>
